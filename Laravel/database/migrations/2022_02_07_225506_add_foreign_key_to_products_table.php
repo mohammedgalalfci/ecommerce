@@ -16,7 +16,7 @@ class AddForeignKeyToProductsTable extends Migration
         Schema::table('products', function (Blueprint $table) {
 
             $table->foreignId('subcat_id')
-            ->constrained('sub_categories')
+            ->constrained('subcategories')
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');

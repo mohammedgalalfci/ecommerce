@@ -13,7 +13,7 @@ class AddForeignKeyToSubCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('sub_categories', function (Blueprint $table) {
+        Schema::table('subcategories', function (Blueprint $table) {
             $table->foreignId('cat_id')
             ->constrained('categories')
             ->nullable()
@@ -30,7 +30,7 @@ class AddForeignKeyToSubCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('sub_categories', function (Blueprint $table) {
+        Schema::table('subcategories', function (Blueprint $table) {
             //
         });
     }

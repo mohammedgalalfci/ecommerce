@@ -6,7 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\Sub_CategoryController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -41,18 +41,18 @@ Route::put('/admins/{admin}',[AdminController::class,'update']);
 Route::delete('/admins/{admin}',[AdminController::class,'delete']);
 
 /**Routing SubCategory */
-Route::get('/sub_categories',[Sub_CategoryController::class,'index']);
-Route::post('/sub_categories',[Sub_CategoryController::class,'store']);
-Route::get('/sub_categories/{sub_category}',[Sub_CategoryController::class,'show']);
-Route::put('/sub_categories/{sub_category}',[Sub_CategoryController::class,'update']);
-Route::delete('/sub_categories/{sub_category}',[Sub_CategoryController::class,'delete']);
+Route::get('/subcategories',[SubCategoryController::class,'index']);
+Route::post('/subcategories',[SubCategoryController::class,'store']);
+Route::get('/subcategories/{subcategory}',[SubCategoryController::class,'show']);
+Route::put('/subcategories/{subcategory}',[SubCategoryController::class,'update']);
+Route::delete('/subcategories/{subcategory}',[SubCategoryController::class,'delete']);
 
 /**Routing Favorite */
 Route::get('/favorites',[FavoriteController::class,'index']);
 Route::post('/favorites',[FavoriteController::class,'store']);
-Route::get('/favorites/{sub_category}',[FavoriteController::class,'show']);
-Route::put('/favorites/{sub_category}',[FavoriteController::class,'update']);
-Route::delete('/favorites/{sub_category}',[FavoriteController::class,'delete']);
+Route::get('/favorites/{favorite}',[FavoriteController::class,'show']);
+Route::put('/favorites/{favorite}',[FavoriteController::class,'update']);
+Route::delete('/favorites/{favorite}',[FavoriteController::class,'delete']);
 
 /**Routing Order */
 Route::get('/orders',[OrderController::class,'index']);
