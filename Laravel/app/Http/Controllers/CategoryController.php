@@ -23,13 +23,13 @@ class CategoryController extends Controller
         $oneCategory=Category::findOrFail($category);
         return new CategoryResource($oneCategory);
     }
-    // public function update($category,Request $req){
-    //     $oneCategory=Category::findOrFail($category);
-    //     $oneCategory->update([
-    //         'cat_name' => $req['cat_name'],
-    //     ]);
-    //     return $oneCategory;
-    // }
+    public function update($category,Request $req){
+        $oneCategory=Category::findOrFail($category);
+        $oneCategory->update([
+            'cat_name' => $req['cat_name'],
+        ]);
+        return $oneCategory;
+    }
 
     public function delete($category){
         $oneCategory=Category::findOrFail($category);

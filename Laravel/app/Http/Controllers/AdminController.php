@@ -21,28 +21,23 @@ class AdminController extends Controller
         ]);
         return new AdminResource($admin);
     }
-    public function show($Admin){
-        $oneAdmin=Admin::findOrFail($Admin);
+    public function show($admin){
+        $oneAdmin=Admin::findOrFail($admin);
         return new AdminResource($oneAdmin);
     }
-    // public function update($Admin,Request $req){
-    //     //$oneAdmin=Admin::findOrFail($Admin);
-    //     $oneAdmin = new Admin;
-    //     $oneAdmin->update([
-    //         // 'admin_name' => $req['admin_name'],
-    //         // 'admin_email' => $req['admin_email'],
-    //         // 'type' => $req['type'],
-    //         // 'password'=> $req['password'],
-    //         $oneAdmin->admin_name = $req->admin_name,
-    //         $oneAdmin->admin_email = $req->admin_email,
-    //         $oneAdmin->type = $req->type,
-    //         $oneAdmin->password = $req->password,
-    //     ]);
-    //     return $oneAdmin;
-    // } 
+    public function update($admin,Request $req){
+        $oneAdmin=Admin::findOrFail($admin);
+        $oneAdmin->update([
+            'admin_name' => $req['admin_name'],
+            'admin_email' => $req['admin_email'],
+            'type' => $req['type'],
+            'password'=> $req['password'],
+        ]);
+        return $oneAdmin;
+    } 
 
-    public function delete($Admin){
-        $oneAdmin=Admin::findOrFail($Admin);
+    public function delete($admin){
+        $oneAdmin=Admin::findOrFail($admin);
         $oneAdmin->delete();
         return new AdminResource($oneAdmin);
     }
