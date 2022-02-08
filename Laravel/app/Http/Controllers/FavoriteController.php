@@ -8,7 +8,7 @@ use App\Http\Resources\FavoriteResource;
 class FavoriteController extends Controller
 {
     public function index(){
-        $favorites=Favorite::all();  
+        $favorites=Favorite::all();
         return FavoriteResource::collection($favorites);
     }
     public function store(){
@@ -22,6 +22,15 @@ class FavoriteController extends Controller
     public function show($favorite){
         $oneFavorite=Favorite::findOrFail($favorite);
         return new FavoriteResource($oneFavorite);
+    }
+
+    public function update($favorite,Request $req){
+         $oneFavorite=Favorite::findOrFail($favorite);
+         $oneFavorite->update([
+            'customer_id' => $req['customer_id'],
+            'product_id' => $req['product_id'],
+        ]);
+        return  $oneFavorite;
     }
 
     public function delete($favorite){

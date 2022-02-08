@@ -29,4 +29,9 @@ class Customer extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function product()
+    {
+        return $this->belongsToMany(Product::class);
+    }
+
 }

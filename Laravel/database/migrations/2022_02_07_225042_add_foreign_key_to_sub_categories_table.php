@@ -14,14 +14,11 @@ class AddForeignKeyToSubCategoriesTable extends Migration
     public function up()
     {
         Schema::table('sub_categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('subcat_name');
             $table->foreignId('cat_id')
             ->constrained('categories')
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->timestamps();
 
         });
     }

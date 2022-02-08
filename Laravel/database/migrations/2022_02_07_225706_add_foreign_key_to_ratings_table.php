@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyToRatingTable extends Migration
+class AddForeignKeyToRatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddForeignKeyToRatingTable extends Migration
      */
     public function up()
     {
-        Schema::table('rating', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->decimal('degree');
+        Schema::table('ratings', function (Blueprint $table) {
+
             $table->foreignId('customer_id')
             ->constrained('customers')
             ->nullable()
@@ -27,7 +26,6 @@ class AddForeignKeyToRatingTable extends Migration
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
@@ -38,7 +36,7 @@ class AddForeignKeyToRatingTable extends Migration
      */
     public function down()
     {
-        Schema::table('rating', function (Blueprint $table) {
+        Schema::table('ratings', function (Blueprint $table) {
 
         });
     }

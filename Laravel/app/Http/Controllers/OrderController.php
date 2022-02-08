@@ -9,7 +9,7 @@ use App\Http\Resources\OrderResource;
 class OrderController extends Controller
 {
     public function index(){
-        $orders=Order::all();  
+        $orders=Order::all();
         return OrderResource::collection($orders);
     }
     public function store(){
@@ -35,6 +35,25 @@ class OrderController extends Controller
         $oneOrder=Order::findOrFail($order);
         return new OrderResource($oneOrder);
     }
+    public function update($order,Request $req){
+        $oneOrder=Order::findOrFail($order);
+        $oneOrder->update([
+            'order_number'=>$req['order_number'],
+            'name'=>$req['name'],
+            'discount'=>$req['discount'],
+            'price'=>$req['price'],
+            'quantity'=>$req['quantity'],
+            'country'=>$req['country'],
+            'city'=>$req['city'],
+            'house_no'=>$req['house_no'],
+            'status'=>$req['status'],
+            'phone'=>$req['phone'],
+            'payment_method'=>$req['payment_method'],
+            'customer_id'=>$req['customer_id'],
+            'cart_id'=>$req['cart_id'],
+       ]);
+       return  $oneOrder;
+   }
 
     public function delete($order){
         $oneOrder=Order::findOrFail($order);

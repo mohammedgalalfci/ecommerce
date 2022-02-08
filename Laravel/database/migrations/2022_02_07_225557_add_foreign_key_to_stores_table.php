@@ -14,17 +14,13 @@ class AddForeignKeyToStoresTable extends Migration
     public function up()
     {
         Schema::table('stores', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->double('price');
-            $table->string('size');
-            $table->string('color');
-            $table->double('discount');
+
             $table->foreignId('product_id')
             ->constrained('products')
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->timestamps();
+
         });
     }
 

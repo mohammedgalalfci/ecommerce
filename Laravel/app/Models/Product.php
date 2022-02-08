@@ -31,4 +31,9 @@ class Product extends Model
     {
         return $this->hasMany(Favorite::class);
     }
+
+    public function customer()
+    {
+        return $this->belongsToMany(Customer::class);
+    }
 }

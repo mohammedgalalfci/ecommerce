@@ -14,6 +14,11 @@ class RatingResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'=>$this->id,
+            'degree'=>$this->degree,
+            'customer_id'=>$this->customer_id,
+            'product_id'=>$this->product_id,
+        ];
     }
 }

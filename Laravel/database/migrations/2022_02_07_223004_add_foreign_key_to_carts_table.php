@@ -14,10 +14,6 @@ class AddForeignKeyToCartsTable extends Migration
     public function up()
     {
         Schema::table('carts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->decimal('total_price');
-            $table->integer('product_number');
-            $table->string('status');
             $table->foreignId('store_id')
             ->constrained('stores')
             ->nullable()
@@ -29,7 +25,6 @@ class AddForeignKeyToCartsTable extends Migration
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->timestamps();
 
         });
     }
