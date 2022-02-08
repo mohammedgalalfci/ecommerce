@@ -14,11 +14,17 @@ class AddForeignKeyToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('product_name');
+            $table->text('description');
+            $table->string('image')->default('0');
+            $table->string('image_path')->default('0');
             $table->foreignId('subcat_id')
             ->constrained('sub_categories')
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

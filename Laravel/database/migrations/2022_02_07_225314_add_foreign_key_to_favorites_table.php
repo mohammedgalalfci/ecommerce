@@ -14,6 +14,7 @@ class AddForeignKeyToFavoritesTable extends Migration
     public function up()
     {
         Schema::table('favorites', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->foreignId('customer_id')
             ->constrained('customers')
             ->nullable()
@@ -25,6 +26,8 @@ class AddForeignKeyToFavoritesTable extends Migration
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

@@ -14,6 +14,8 @@ class AddForeignKeyToRatingTable extends Migration
     public function up()
     {
         Schema::table('rating', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->decimal('degree');
             $table->foreignId('customer_id')
             ->constrained('customers')
             ->nullable()
@@ -25,6 +27,7 @@ class AddForeignKeyToRatingTable extends Migration
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

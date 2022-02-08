@@ -14,6 +14,18 @@ class AddForeignKeyToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('order_number');
+            $table->string('name');
+            $table->decimal('discount');
+            $table->decimal('price');
+            $table->integer('quantity');
+            $table->string('country');
+            $table->string('city');
+            $table->integer('house_no');
+            $table->string('status')->default('waiting');
+            $table->string('phone');
+            $table->string('payment_method');
             $table->foreignId('customer_id')
             ->constrained('customers')
             ->nullable()
@@ -25,6 +37,7 @@ class AddForeignKeyToOrdersTable extends Migration
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
