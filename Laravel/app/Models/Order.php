@@ -21,6 +21,7 @@ class Order extends Model
         'status',
         'phone',
         'payment_method',
+        'full_address',
         'customer_id',
         'cart_id'
 

@@ -23,6 +23,7 @@ class OrderResource extends JsonResource
             'quantity'=>$this->quantity,
             'country'=>$this->country,
             'city'=>$this->city,
+            'full_address'=>$this->full_address,
             'house_no'=>$this->house_no,
             'status'=>$this->status,
             'phone'=>$this->phone,

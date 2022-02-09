@@ -32,6 +32,7 @@ class OrderRequest extends FormRequest
             'quantity'=>['required','numeric'],
             'country'=>['required'],
             'city'=>['required'],
+            'full_address'=>['required'],
             'phone'=>['required','min:11','max:11','regex:/(01)[0-9]{9}/'],
             'customer_id'=> 'required|exists:customers,id',
             'cart_id'=> 'required|exists:carts,id',

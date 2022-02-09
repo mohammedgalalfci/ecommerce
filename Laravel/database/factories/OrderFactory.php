@@ -22,6 +22,7 @@ class OrderFactory extends Factory
             'quantity' => random_int(1,100),
             'country' => $this->faker-> country(),
             'city' => $this->faker-> city(),
+            'full_address' => $this->faker-> address(),
             'house_no' =>  random_int(1,100),
             'status' => $this->faker-> title(),
             'phone' => $this->faker-> phoneNumber(),

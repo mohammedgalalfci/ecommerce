@@ -11,7 +11,13 @@ class Customer extends Model
     protected $fillable =[
         'customer_name',
         'customer_email',
-        'password'
+        'password',
+        'full_address',
+        'house_no',
+        'country',
+        'city',
+        'phone'
+
     ];
 
     public function favorite()

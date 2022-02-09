@@ -18,7 +18,12 @@ class CustomerController extends Controller
         $customer=Customer::create([
             'customer_name' => $data['customer_name'],
             'customer_email' => $data['customer_email'],
-            'password' => $data['password']
+            'password' => $data['password'],
+            'full_address' => $data['full_address'],
+            'house_no' => $data['house_no'],
+            'country' => $data['country'],
+            'city' => $data['city'],
+            'phone' => $data['phone']
         ]);
         return new CustomerResource($customer);
     }
@@ -33,7 +38,12 @@ class CustomerController extends Controller
         $oneCustomer->update([
             'customer_name' => $req['customer_name'],
             'customer_email' => $req['customer_email'],
-            'password' => $req['password']
+            'password' => $req['password'],
+            'full_address' => $req['full_address'],
+            'house_no' => $req['house_no'],
+            'country' => $req['country'],
+            'city' => $req['city'],
+            'phone' => $req['phone']
         ]);
         return $oneCustomer;
     }
