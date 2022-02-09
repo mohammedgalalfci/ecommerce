@@ -6,7 +6,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\Sub_CategoryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -52,9 +51,9 @@ Route::delete('/subcategories/{subcategory}',[SubcategoryController::class,'dele
 /**Routing Favorite */
 Route::get('/favorites',[FavoriteController::class,'index']);
 Route::post('/favorites',[FavoriteController::class,'store']);
-Route::get('/favorites/{sub_category}',[FavoriteController::class,'show']);
-Route::put('/favorites/{sub_category}',[FavoriteController::class,'update']);
-Route::delete('/favorites/{sub_category}',[FavoriteController::class,'delete']);
+Route::get('/favorites/{favorite}',[FavoriteController::class,'show']);
+Route::put('/favorites/{favorite}',[FavoriteController::class,'update']);
+Route::delete('/favorites/{favorite}',[FavoriteController::class,'delete']);
 
 /**Routing Order */
 Route::get('/orders',[OrderController::class,'index']);

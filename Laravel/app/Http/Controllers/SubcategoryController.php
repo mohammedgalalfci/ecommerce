@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Resources\SubcategoryResource;
 use App\Models\Subcategory;
-use Illuminate\Http\Request;
 
 class SubcategoryController extends Controller
 {
     public function index(){
-        $sub_categories=Subcategory::all();
-        return SubcategoryResource::collection($sub_categories);
+        $subcategories=Subcategory::all();
+        return SubcategoryResource::collection($subcategories);
     }
     public function store(){
         $data = request()->all();
@@ -23,6 +23,14 @@ class SubcategoryController extends Controller
     public function show($subcategory){
         $oneSubCategory=Subcategory::findOrFail($subcategory);
         return new SubcategoryResource($oneSubCategory);
+    }
+    public function update($subcategory,Request $req){
+        $oneSubCategory=Subcategory::findOrFail($subcategory);
+        $oneSubCategory->update([
+            'subcat_name'=>$req['subcat_name'],
+            'cat_id'=>$req['cat_id'],
+        ]);
+        return $oneSubCategory;
     }
 
     public function delete($subcategory){
