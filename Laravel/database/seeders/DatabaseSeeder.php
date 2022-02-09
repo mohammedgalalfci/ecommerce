@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Favorite;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            CartSeeder::class,
+            CategorySeeder::class,
+            CustomerSeeder::class,
+            FavoriteSeeder::class,
+            OrderSeeder::class,
+            ProductSeeder::class,
+            SubcategorySeeder::class,
+            RatingSeeder::class,
+            StoreSeeder::class,
+        ]);
     }
 }

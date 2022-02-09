@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\StoreResource;
-use App\Models\Store;
 use Illuminate\Http\Request;
-use App\Http\Resources\StoreResource;
 use App\Models\Store;
 class StoreController extends Controller
 {
