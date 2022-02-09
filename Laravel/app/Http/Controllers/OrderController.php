@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Http\Resources\OrderResource;
-
+use App\Http\Requests\OrderRequest;
 class OrderController extends Controller
 {
     public function index(){
         $orders=Order::all();
         return OrderResource::collection($orders);
     }
-    public function store(){
+    public function store(OrderRequest $request){
         $data = request()->all();
         $order=Order::create([
             'order_number'=>$data['order_number'],
@@ -35,7 +35,7 @@ class OrderController extends Controller
         $oneOrder=Order::findOrFail($order);
         return new OrderResource($oneOrder);
     }
-    public function update($order,Request $req){
+    public function update($order,OrderRequest $req){
         $oneOrder=Order::findOrFail($order);
         $oneOrder->update([
             'order_number'=>$req['order_number'],

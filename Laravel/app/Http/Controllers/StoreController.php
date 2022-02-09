@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Resources\StoreResource;
 use Illuminate\Http\Request;
 use App\Models\Store;
+use App\Http\Requests\StoreRequest;
 class StoreController extends Controller
 {
     public function index(){
         $stores=Store::all();
         return StoreResource::collection($stores);
     }
-    public function store(){
+    public function store(StoreRequest $request){
         $data = request()->all();
         $store=Store::create([
             'price'=>$data['price'],
@@ -26,7 +27,7 @@ class StoreController extends Controller
         $oneStore=Store::findOrFail($store);
         return new StoreResource($oneStore);
     }
-    public function update($store,Request $req){
+    public function update($store,StoreRequest $req){
         $oneStore=Store::findOrFail($store);
         $oneStore->update([
             'price'=>$req['price'],
