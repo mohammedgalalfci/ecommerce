@@ -91,7 +91,7 @@ Route::get('/ratings/{rating}',[RatingController::class,'show']);
 Route::put('/ratings/{rating}',[RatingController::class,'update']);
 Route::delete('/ratings/{rating}',[RatingController::class,'delete']);
 
-/**Routing store */
+/**Routing stores */
 Route::get('/stores',[StoreController::class,'index']);
 Route::post('/stores',[StoreController::class,'store']);
 Route::get('/stores/{store}',[StoreController::class,'show']);

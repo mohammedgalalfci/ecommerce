@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Resources\StoreResource;
 use App\Models\Store;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\StoreResource;
+use App\Models\Store;
 class StoreController extends Controller
 {
     public function index(){
@@ -15,11 +16,11 @@ class StoreController extends Controller
     public function store(){
         $data = request()->all();
         $store=Store::create([
-            'price' => $data['price'],
-            'size' => $data['size'],
-            'color' => $data['color'],
-            'discount' => $data['discount'],
-            'product_id' => $data['product_id'],
+            'price'=>$data['price'],
+            'size'=>$data['size'],
+            'color'=>$data['color'],
+            'discount'=>$data['discount'],
+            'product_id'=>$data['product_id'],
         ]);
         return new StoreResource($store);
     }
@@ -27,17 +28,16 @@ class StoreController extends Controller
         $oneStore=Store::findOrFail($store);
         return new StoreResource($oneStore);
     }
-
     public function update($store,Request $req){
-         $oneStore=Store::findOrFail($store);
-         $oneStore->update([
-            'price' => $req['price'],
-            'size' => $req['size'],
-            'color' => $req['color'],
-            'discount' => $req['discount'],
-            'product_id' => $req['product_id'],
+        $oneStore=Store::findOrFail($store);
+        $oneStore->update([
+            'price'=>$req['price'],
+            'size'=>$req['size'],
+            'color'=>$req['color'],
+            'discount'=>$req['discount'],
+            'product_id'=>$req['product_id'],
         ]);
-        return  $oneStore;
+        return $oneStore;
     }
 
     public function delete($store){
