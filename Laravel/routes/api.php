@@ -11,6 +11,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,3 +90,10 @@ Route::post('/ratings',[RatingController::class,'store']);
 Route::get('/ratings/{rating}',[RatingController::class,'show']);
 Route::put('/ratings/{rating}',[RatingController::class,'update']);
 Route::delete('/ratings/{rating}',[RatingController::class,'delete']);
+
+/**Routing stores */
+Route::get('/stores',[StoreController::class,'index']);
+Route::post('/stores',[StoreController::class,'store']);
+Route::get('/stores/{store}',[StoreController::class,'show']);
+Route::put('/stores/{store}',[StoreController::class,'update']);
+Route::delete('/stores/{store}',[StoreController::class,'delete']);
