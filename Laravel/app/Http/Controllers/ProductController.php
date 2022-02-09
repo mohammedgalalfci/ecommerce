@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class ProductController extends Controller
         $products=Product::all();
         return ProductResource::collection($products);
     }
-    public function store(){
+    public function store(ProductRequest $req){
         $data = request()->all();
         $product=Product::create([
             'product_name' => $data['product_name'],
@@ -23,13 +24,13 @@ class ProductController extends Controller
         ]);
         return new ProductResource($product);
     }
-    
+
     public function show($product){
         $oneProduct=Product::findOrFail($product);
         return new ProductResource($oneProduct);
     }
 
-    public function update($product,Request $req){
+    public function update($product,ProductRequest $req){
         $oneProduct=Product::findOrFail($product);
         $oneProduct->update([
             'product_name' => $req['product_name'],

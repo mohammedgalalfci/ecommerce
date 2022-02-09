@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Resources\CategoryResource;
@@ -9,10 +10,10 @@ use App\Http\Resources\CategoryResource;
 class CategoryController extends Controller
 {
     public function index(){
-        $categories=Category::all();  
+        $categories=Category::all();
         return CategoryResource::collection($categories);
     }
-    public function store(){
+    public function store(CategoryRequest $req){
         $data = request()->all();
         $category=Category::create([
             'cat_name' => $data['cat_name'],
@@ -23,7 +24,7 @@ class CategoryController extends Controller
         $oneCategory=Category::findOrFail($category);
         return new CategoryResource($oneCategory);
     }
-    public function update($category,Request $req){
+    public function update($category,CategoryRequest $req){
         $oneCategory=Category::findOrFail($category);
         $oneCategory->update([
             'cat_name' => $req['cat_name'],

@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-class CustomerRequest extends FormRequest
+
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class CustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer_name'=>['required', 'min:3', 'max:25'],
-            'customer_email'=>['required','email', Rule::unique('admins','admin_email')->ignore($this->admin)],
-            'password'=>['required', 'min:6'],
+            'cat_name'=>['required', 'min:3', 'max:25'],
         ];
     }
 }

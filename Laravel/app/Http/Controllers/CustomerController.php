@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerRequest;
 use App\Http\Resources\CustomerResource;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class CustomerController extends Controller
         $customers=Customer::all();
         return CustomerResource::collection($customers);
     }
-    public function store(){
+    public function store(CustomerRequest $req){
         $data = request()->all();
         $customer=Customer::create([
             'customer_name' => $data['customer_name'],
@@ -27,7 +28,7 @@ class CustomerController extends Controller
         return new CustomerResource($oneCustomer);
     }
 
-    public function update($customer,Request $req){
+    public function update($customer,CustomerRequest $req){
         $oneCustomer=Customer::findOrFail($customer);
         $oneCustomer->update([
             'customer_name' => $req['customer_name'],
