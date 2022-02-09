@@ -11,6 +11,8 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\SubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,11 +43,11 @@ Route::put('/admins/{admin}',[AdminController::class,'update']);
 Route::delete('/admins/{admin}',[AdminController::class,'delete']);
 
 /**Routing SubCategory */
-Route::get('/sub_categories',[Sub_CategoryController::class,'index']);
-Route::post('/sub_categories',[Sub_CategoryController::class,'store']);
-Route::get('/sub_categories/{sub_category}',[Sub_CategoryController::class,'show']);
-Route::put('/sub_categories/{sub_category}',[Sub_CategoryController::class,'update']);
-Route::delete('/sub_categories/{sub_category}',[Sub_CategoryController::class,'delete']);
+Route::get('/subcategories',[SubcategoryController::class,'index']);
+Route::post('/subcategories',[SubcategoryController::class,'store']);
+Route::get('/subcategories/{subcategory}',[SubcategoryController::class,'show']);
+Route::put('/subcategories/{subcategory}',[SubcategoryController::class,'update']);
+Route::delete('/subcategories/{subcategory}',[SubcategoryController::class,'delete']);
 
 /**Routing Favorite */
 Route::get('/favorites',[FavoriteController::class,'index']);
@@ -89,3 +91,10 @@ Route::post('/ratings',[RatingController::class,'store']);
 Route::get('/ratings/{rating}',[RatingController::class,'show']);
 Route::put('/ratings/{rating}',[RatingController::class,'update']);
 Route::delete('/ratings/{rating}',[RatingController::class,'delete']);
+
+/**Routing store */
+Route::get('/stores',[StoreController::class,'index']);
+Route::post('/stores',[StoreController::class,'store']);
+Route::get('/stores/{store}',[StoreController::class,'show']);
+Route::put('/stores/{store}',[StoreController::class,'update']);
+Route::delete('/stores/{store}',[StoreController::class,'delete']);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyToSubCategoriesTable extends Migration
+class AddForeignKeyToSubcategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class AddForeignKeyToSubCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('sub_categories', function (Blueprint $table) {
+        Schema::table('subcategories', function (Blueprint $table) {
             $table->foreignId('cat_id')
             ->constrained('categories')
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
-
         });
     }
 
@@ -30,7 +29,7 @@ class AddForeignKeyToSubCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('sub_categories', function (Blueprint $table) {
+        Schema::table('subcategories', function (Blueprint $table) {
             //
         });
     }
