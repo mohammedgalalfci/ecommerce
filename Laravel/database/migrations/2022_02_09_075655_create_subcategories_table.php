@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubCategoriesTable extends Migration
+class CreateSubcategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,6 @@ class CreateSubCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('subcat_name');
             $table->timestamps();
-
         });
     }
 

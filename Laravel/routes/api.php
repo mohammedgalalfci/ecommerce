@@ -6,7 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -41,11 +41,11 @@ Route::put('/admins/{admin}',[AdminController::class,'update']);
 Route::delete('/admins/{admin}',[AdminController::class,'delete']);
 
 /**Routing SubCategory */
-Route::get('/subcategories',[SubCategoryController::class,'index']);
-Route::post('/subcategories',[SubCategoryController::class,'store']);
-Route::get('/subcategories/{subcategory}',[SubCategoryController::class,'show']);
-Route::put('/subcategories/{subcategory}',[SubCategoryController::class,'update']);
-Route::delete('/subcategories/{subcategory}',[SubCategoryController::class,'delete']);
+Route::get('/subcategories',[SubcategoryController::class,'index']);
+Route::post('/subcategories',[SubcategoryController::class,'store']);
+Route::get('/subcategories/{subcategory}',[SubcategoryController::class,'show']);
+Route::put('/subcategories/{subcategory}',[SubcategoryController::class,'update']);
+Route::delete('/subcategories/{subcategory}',[SubcategoryController::class,'delete']);
 
 /**Routing Favorite */
 Route::get('/favorites',[FavoriteController::class,'index']);

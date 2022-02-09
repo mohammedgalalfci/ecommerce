@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyToProductsTable extends Migration
+class AddForignKeyToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,11 @@ class AddForeignKeyToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-
             $table->foreignId('subcat_id')
             ->constrained('subcategories')
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
-
         });
     }
 

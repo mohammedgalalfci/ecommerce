@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyToSubCategoriesTable extends Migration
+class AddForignKeyToSubcategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,6 @@ class AddForeignKeyToSubCategoriesTable extends Migration
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
-
         });
     }
 

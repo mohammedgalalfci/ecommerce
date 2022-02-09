@@ -19,7 +19,7 @@ class Product extends Model
     ];
     public function sub_category()
     {
-        return $this->belongsTo(Sub_Category::class);
+        return $this->belongsTo(Subcategory::class);
     }
 
     public function store()
