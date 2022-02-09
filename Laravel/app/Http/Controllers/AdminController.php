@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminRequest;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Http\Resources\AdminResource;
 class AdminController extends Controller
 {
     public function index(){
-        $admins=Admin::all();  
+        $admins=Admin::all();
         return AdminResource::collection($admins);
     }
-    public function store(){
+    public function store(AdminRequest $request){
         $data = request()->all();
         $admin=Admin::create([
             'admin_name' => $data['admin_name'],
@@ -25,7 +26,7 @@ class AdminController extends Controller
         $oneAdmin=Admin::findOrFail($admin);
         return new AdminResource($oneAdmin);
     }
-    public function update($admin,Request $req){
+    public function update($admin,AdminRequest $req){
         $oneAdmin=Admin::findOrFail($admin);
         $oneAdmin->update([
             'admin_name' => $req['admin_name'],
@@ -34,7 +35,7 @@ class AdminController extends Controller
             'password'=> $req['password'],
         ]);
         return $oneAdmin;
-    } 
+    }
 
     public function delete($admin){
         $oneAdmin=Admin::findOrFail($admin);
