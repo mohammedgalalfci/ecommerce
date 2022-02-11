@@ -22,7 +22,8 @@ class CartController extends Controller
             'store_id'=> $data['store_id'],
             'customer_id'=> $data['customer_id'],
         ]);
-        return new CartResource($cart);
+        //return new CartResource($cart);
+        return response()->json(["message"=>"Product added successfuly"],200);
     }
     public function show($cart){
         $oneCart=Cart::findOrFail($cart);
