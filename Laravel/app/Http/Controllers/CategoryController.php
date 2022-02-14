@@ -12,17 +12,20 @@ class CategoryController extends Controller
     public function index(){
         $categories=Category::all();
         return CategoryResource::collection($categories);
+        // return response()->json([CategoryResource::collection($categories)],200);
     }
     public function store(CategoryRequest $req){
         $data = request()->all();
         $category=Category::create([
             'cat_name' => $data['cat_name'],
         ]);
-        return new CategoryResource($category);
+        // return new CategoryResource($category);
+        return response()->json(["message"=>"Category Created Successfully"],201);
     }
     public function show($category){
         $oneCategory=Category::findOrFail($category);
-        return new CategoryResource($oneCategory);
+        // return new CategoryResource($oneCategory);
+        return response()->json(["message"=>"Category Updated successfully"],201);
     }
     public function update($category,CategoryRequest $req){
         $oneCategory=Category::findOrFail($category);
@@ -35,6 +38,7 @@ class CategoryController extends Controller
     public function delete($category){
         $oneCategory=Category::findOrFail($category);
         $oneCategory->delete();
-        return new CategoryResource($oneCategory);
+        // return new CategoryResource($oneCategory);
+        return response()->json(["message"=>"Category Deleted successfully"],201);
     }
 }

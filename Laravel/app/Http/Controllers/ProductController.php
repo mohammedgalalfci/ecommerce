@@ -36,7 +36,8 @@ class ProductController extends Controller
         }
         $product->image=$complexPic;
         $product->save();
-        return response()->json(["message"=>"Product added successfuly"],200);
+        return response()->json(["message"=>"Product Created Successfully"],201);
+
     }
 
     public function show($product){
@@ -53,12 +54,14 @@ class ProductController extends Controller
             'image_path' => $req['image_path'],
             'subcat_id' => $req['subcat_id']
         ]);
-        return $oneProduct;
+        // return $oneProduct;
+        return response()->json(["message"=>"Product Updated Successfully"],201);
     }
 
     public function delete($product){
         $oneProduct=Product::findOrFail($product);
         $oneProduct->delete();
         return new ProductResource($oneProduct);
+        return response()->json(["message"=>"Product Deleted Successfully"],201);
     }
 }

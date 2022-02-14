@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('product_name');
             $table->text('description');
-            $table->text('image')->default('0');
+            $table->string('image')->default('0');
             $table->string('image_path')->default('0');
             $table->timestamps();
 

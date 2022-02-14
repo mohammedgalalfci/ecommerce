@@ -12,6 +12,7 @@ class SubcategoryController extends Controller
     public function index(){
         $subcategories=Subcategory::all();
         return SubcategoryResource::collection($subcategories);
+        // return response()->json([SubcategoryResource::collection($subcategories)],200);
     }
     public function store(SubcategoryRequest $req){
         $data = request()->all();
@@ -19,7 +20,9 @@ class SubcategoryController extends Controller
             'subcat_name' => $data['subcat_name'],
             'cat_id' => $data['cat_id'],
         ]);
-        return new SubcategoryResource($subcategory);
+        // return new SubcategoryResource($subcategory);
+        return response()->json(["message"=>"Subcategory Created Successfully"],201);
+
     }
     public function show($subcategory){
         $oneSubCategory=Subcategory::findOrFail($subcategory);
@@ -31,12 +34,16 @@ class SubcategoryController extends Controller
             'subcat_name'=>$req['subcat_name'],
             'cat_id'=>$req['cat_id'],
         ]);
-        return $oneSubCategory;
+        // return $oneSubCategory;
+        return response()->json(["message"=>"Subcategory Updated Successfully"],201);
+
     }
 
     public function delete($subcategory){
         $oneSubCategory=Subcategory::findOrFail($subcategory);
         $oneSubCategory->delete();
-        return new SubcategoryResource($oneSubCategory);
+        // return new SubcategoryResource($oneSubCategory);
+        return response()->json(["message"=>"Subcategory Deleted Successfully"],201);
+
     }
 }

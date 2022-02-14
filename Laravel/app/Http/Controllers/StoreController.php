@@ -21,7 +21,9 @@ class StoreController extends Controller
             'discount'=>$data['discount'],
             'product_id'=>$data['product_id'],
         ]);
-        return new StoreResource($store);
+        // return new StoreResource($store);
+        return response()->json(["message"=>"Store Created Successfully"],201);
+
     }
     public function show($store){
         $oneStore=Store::findOrFail($store);
@@ -36,12 +38,14 @@ class StoreController extends Controller
             'discount'=>$req['discount'],
             'product_id'=>$req['product_id'],
         ]);
-        return $oneStore;
+        // return $oneStore;
+        return response()->json(["message"=>"Store Updated Successfully"],201);
     }
 
     public function delete($store){
         $oneStore=Store::findOrFail($store);
         $oneStore->delete();
-        return new StoreResource($oneStore);
+        // return new StoreResource($oneStore);
+        return response()->json(["message"=>"Store Deleted Successfully"],201);
     }
 }

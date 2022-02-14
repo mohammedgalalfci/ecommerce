@@ -12,6 +12,8 @@ class CartController extends Controller
     public function index(){
         $carts=Cart::all();
         return CartResource::collection($carts);
+        // return response()->json([CartResource::collection($carts)],200);
+
     }
     public function store(CartRequest $request){
         $data = request()->all();
@@ -23,7 +25,7 @@ class CartController extends Controller
             'customer_id'=> $data['customer_id'],
         ]);
         //return new CartResource($cart);
-        return response()->json(["message"=>"Product added successfuly"],200);
+        return response()->json(["message"=>"Cart Created Successfully"],201);
     }
     public function show($cart){
         $oneCart=Cart::findOrFail($cart);
@@ -38,12 +40,14 @@ class CartController extends Controller
             'store_id'=> $req['store_id'],
             'customer_id'=> $req['customer_id'],
         ]);
-        return $oneCart;
+        // return $oneCart;
+        return response()->json(["message"=>"Cart Updated successfully"],201);
     }
 
-    public function delete($admin){
-        $oneAdmin=Cart::findOrFail($admin);
-        $oneAdmin->delete();
-        return new CartResource($oneAdmin);
+    public function delete($cart){
+        $oneCart=Cart::findOrFail($cart);
+        $oneCart->delete();
+        // return new CartResource($oneCart);
+        return response()->json(["message"=>"Cart Deleted successfully"],201);
     }
 }

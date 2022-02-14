@@ -11,6 +11,7 @@ class AdminController extends Controller
     public function index(){
         $admins=Admin::all();
         return AdminResource::collection($admins);
+        // return response()->json([AdminResource::collection($admins)],200);
     }
     public function store(AdminRequest $request){
         $data = request()->all();
@@ -20,7 +21,8 @@ class AdminController extends Controller
             'type' => $data['type'],
             'password'=> $data['password'],
         ]);
-        return new AdminResource($admin);
+        // return new AdminResource($admin);
+        return response()->json(["message"=>"Admin Created Successfully"],201);
     }
     public function show($admin){
         $oneAdmin=Admin::findOrFail($admin);
@@ -34,12 +36,14 @@ class AdminController extends Controller
             'type' => $req['type'],
             'password'=> $req['password'],
         ]);
-        return $oneAdmin;
+        // return $oneAdmin;
+        return response()->json(["message"=>"Admin Updated successfully"],201);
     }
 
     public function delete($admin){
         $oneAdmin=Admin::findOrFail($admin);
         $oneAdmin->delete();
-        return new AdminResource($oneAdmin);
+        // return new AdminResource($oneAdmin);
+        return response()->json(["message"=>"Admin Deleted successfully"],201);
     }
 }

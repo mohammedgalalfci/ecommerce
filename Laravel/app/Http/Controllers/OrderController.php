@@ -11,6 +11,8 @@ class OrderController extends Controller
     public function index(){
         $orders=Order::all();
         return OrderResource::collection($orders);
+        // return response()->json([OrderResource::collection($orders)],200);
+
     }
     public function store(OrderRequest $request){
         $data = request()->all();
@@ -30,7 +32,8 @@ class OrderController extends Controller
             'customer_id'=>$data['customer_id'],
             'cart_id'=>$data['cart_id'],
         ]);
-        return new OrderResource($order);
+        // return new OrderResource($order);
+        return response()->json(["message"=>"Order Created Successfully"],201);
     }
     public function show($order){
         $oneOrder=Order::findOrFail($order);
@@ -54,12 +57,15 @@ class OrderController extends Controller
             'customer_id'=>$req['customer_id'],
             'cart_id'=>$req['cart_id'],
        ]);
-       return  $oneOrder;
+    //    return  $oneOrder;
+       return response()->json(["message"=>"Order Updated Successfully"],201);
+
    }
 
     public function delete($order){
         $oneOrder=Order::findOrFail($order);
         $oneOrder->delete();
-        return new OrderResource($oneOrder);
+        // return new OrderResource($oneOrder);
+        return response()->json(["message"=>"Order Deleted Successfully"],201);
     }
 }
