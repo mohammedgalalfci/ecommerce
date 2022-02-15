@@ -39,23 +39,13 @@ class OrderController extends Controller
         $oneOrder=Order::findOrFail($order);
         return new OrderResource($oneOrder);
     }
-    public function update($order,OrderRequest $req){
+    public function update($order,Request $req){
+        $req->validate([
+            'status' => 'in:pending,processing,completed,canceled',
+    ]);
         $oneOrder=Order::findOrFail($order);
         $oneOrder->update([
-            'order_number'=>$req['order_number'],
-            'name'=>$req['name'],
-            'discount'=>$req['discount'],
-            'price'=>$req['price'],
-            'quantity'=>$req['quantity'],
-            'full_address'=>$req['full_address'],
-            'country'=>$req['country'],
-            'city'=>$req['city'],
-            'house_no'=>$req['house_no'],
-            'status'=>$req['status'],
-            'phone'=>$req['phone'],
-            'payment_method'=>$req['payment_method'],
-            'user_id'=>$req['user_id'],
-            'cart_id'=>$req['cart_id'],
+            'status'=>$req['status']
        ]);
     //    return  $oneOrder;
        return response()->json(["message"=>"Order Updated Successfully"],201);

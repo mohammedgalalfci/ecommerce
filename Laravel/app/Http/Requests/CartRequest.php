@@ -26,6 +26,7 @@ class CartRequest extends FormRequest
         return [
             'total_price'=>['required','numeric'],
             'products_number'=>['required','numeric'],
+            'status'=> 'in:waiting,completed',
             'store_id'=> 'required|exists:stores,id',
             'user_id'=> 'required|exists:users,id',
         ];

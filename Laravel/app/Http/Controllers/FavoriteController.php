@@ -27,6 +27,7 @@ class FavoriteController extends Controller
     }
 
     public function update($favorite,Request $req){
+        $req->validate(['user_id'=> 'exists:users,id','product_id'=> 'exists:products,id']);
          $oneFavorite=Favorite::findOrFail($favorite);
          $oneFavorite->update([
             'user_id' => $req['user_id'],

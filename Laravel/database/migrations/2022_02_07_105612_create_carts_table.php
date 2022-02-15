@@ -17,7 +17,7 @@ class CreateCartsTable extends Migration
             $table->bigIncrements('id');
             $table->decimal('total_price');
             $table->integer('products_number');
-            $table->string('status')->default('waiting');
+            $table->enum('status', ['waiting', 'completed'])->default('waiting');
             $table->timestamps();
 
         });

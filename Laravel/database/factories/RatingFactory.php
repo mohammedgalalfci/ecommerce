@@ -15,7 +15,7 @@ class RatingFactory extends Factory
     {
         return [
             'degree' => $this->faker-> randomDigit(),
-            'customer_id'=> random_int(1,10),
+            'user_id'=> random_int(1,10),
             'product_id'=> random_int(1,10),
         ];
     }

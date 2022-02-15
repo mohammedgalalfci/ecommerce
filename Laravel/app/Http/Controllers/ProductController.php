@@ -45,14 +45,13 @@ class ProductController extends Controller
         return new ProductResource($oneProduct);
     }
 
-    public function update($product,ProductRequest $req){
+    public function update($product,Request $req){
+        $req->validate(['product_name'=>'min:3'|'max:25',
+        'description'=>'min:10'| 'max:255']);
         $oneProduct=Product::findOrFail($product);
         $oneProduct->update([
             'product_name' => $req['product_name'],
             'description' => $req['description'],
-            'image' => $req['image'],
-            'image_path' => $req['image_path'],
-            'subcat_id' => $req['subcat_id']
         ]);
         // return $oneProduct;
         return response()->json(["message"=>"Product Updated Successfully"],201);

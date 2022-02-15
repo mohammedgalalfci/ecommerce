@@ -24,10 +24,10 @@ class OrderFactory extends Factory
             'city' => $this->faker-> city(),
             'full_address' => $this->faker-> address(),
             'house_no' =>  random_int(1,100),
-            'status' => $this->faker-> title(),
+            'status' => $this->faker->randomElement(['pending','processing','completed','canceled']),
             'phone' => $this->faker-> phoneNumber(),
             'payment_method' => $this->faker-> title(),
-            'customer_id' => random_int(1,5),
+            'user_id' => random_int(1,5),
             'cart_id' => $this->faker->numberBetween(1,3),
         ];
     }

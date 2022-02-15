@@ -22,7 +22,7 @@ class CartController extends Controller
             'products_number' => $data['products_number'],
             'status' => $data['status'],
             'store_id'=> $data['store_id'],
-            'customer_id'=> $data['customer_id'],
+            'user_id'=> $data['user_id'],
         ]);
         //return new CartResource($cart);
         return response()->json(["message"=>"Cart Created Successfully"],201);
@@ -31,14 +31,17 @@ class CartController extends Controller
         $oneCart=Cart::findOrFail($cart);
         return new CartResource($oneCart);
     }
-    public function update($cart,CartRequest $req){
+    public function update($cart,Request $req){
+        $req->validate([
+            'status' => 'in:waiting,completed',
+    ]);
         $oneCart=Cart::findOrFail($cart);
         $oneCart->update([
-            'total_price' => $req['total_price'],
-            'products_number' => $req['products_number'],
             'status' => $req['status'],
-            'store_id'=> $req['store_id'],
-            'customer_id'=> $req['customer_id'],
+            // 'total_price' => $req['total_price'],
+            // 'products_number' => $req['products_number'],
+            // 'store_id'=> $req['store_id'],
+            // 'user_id'=> $req['user_id'],
         ]);
         // return $oneCart;
         return response()->json(["message"=>"Cart Updated successfully"],201);

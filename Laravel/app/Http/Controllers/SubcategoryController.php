@@ -29,10 +29,11 @@ class SubcategoryController extends Controller
         return new SubcategoryResource($oneSubCategory);
     }
     public function update($subcategory,Request $req){
+        $req->validate(['subcat_name'=>['required', 'min:3', 'max:25']]);
         $oneSubCategory=Subcategory::findOrFail($subcategory);
         $oneSubCategory->update([
             'subcat_name'=>$req['subcat_name'],
-            'cat_id'=>$req['cat_id'],
+            
         ]);
         // return $oneSubCategory;
         return response()->json(["message"=>"Subcategory Updated Successfully"],201);

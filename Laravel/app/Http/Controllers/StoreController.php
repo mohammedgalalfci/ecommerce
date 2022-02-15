@@ -29,14 +29,20 @@ class StoreController extends Controller
         $oneStore=Store::findOrFail($store);
         return new StoreResource($oneStore);
     }
-    public function update($store,StoreRequest $req){
+    public function update($store,Request $req){
+        $req->validate([
+        'price'=>['numeric'],
+        'size'=>'max:255',
+        'color'=>'max:255',
+        'discount'=>'numeric',
+        ]);
         $oneStore=Store::findOrFail($store);
         $oneStore->update([
             'price'=>$req['price'],
             'size'=>$req['size'],
             'color'=>$req['color'],
             'discount'=>$req['discount'],
-            'product_id'=>$req['product_id'],
+            // 'product_id'=>$req['product_id'],
         ]);
         // return $oneStore;
         return response()->json(["message"=>"Store Updated Successfully"],201);

@@ -15,8 +15,9 @@ class RatingController extends Controller
     public function store(RatingRequest $request){
         $data = request()->all();
         $rating=Rating::create([
-            'customer_id' => $data['customer_id'],
+            'user_id' => $data['user_id'],
             'product_id' => $data['product_id'],
+            'degree' =>$data['degree']
         ]);
         // return new RatingResource($rating);
         return response()->json(["message"=>"Rating Created Successfully"],201);
@@ -27,11 +28,17 @@ class RatingController extends Controller
         return new RatingResource($oneRating);
     }
 
-    public function update($rating,RatingRequest $req){
+    public function update($rating,Request $req){
+        $req->validate([
+        'user_id'=> 'exists:users,id',
+        'product_id'=> 'exists:products,id',
+        'degree'=> ['min:0','max:5','numeric']
+    ]);
          $oneRating=Rating::findOrFail($rating);
          $oneRating->update([
-            'customer_id' => $req['customer_id'],
+            'user_id' => $req['user_id'],
             'product_id' => $req['product_id'],
+            'degree' =>$req['degree']
         ]);
         // return  $oneRating;
         return response()->json(["message"=>"Rating Updated Successfully"],201);

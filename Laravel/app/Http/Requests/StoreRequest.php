@@ -25,6 +25,9 @@ class StoreRequest extends FormRequest
     {
         return [
             'price'=>['required','numeric'],
+            'size'=>'required|max:255',
+            'color'=>'required|max:255',
+            'discount'=>'required|numeric',
             'product_id'=> 'required|exists:products,id',
         ];
     }

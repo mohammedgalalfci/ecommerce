@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('city');
             $table->string('full_address');
             $table->integer('house_no');
-            $table->string('status');
+            $table->enum('status',['pending','processing','completed','canceled']);
             $table->string('phone');
             $table->string('payment_method')->default('cash');
 
