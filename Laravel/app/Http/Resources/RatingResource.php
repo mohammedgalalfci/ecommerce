@@ -17,7 +17,7 @@ class RatingResource extends JsonResource
         return [
             'id'=>$this->id,
             'degree'=>$this->degree,
-            'customer_id'=>$this->customer_id,
+            'user_id'=>$this->user_id,
             'product_id'=>$this->product_id,
         ];
     }

@@ -24,7 +24,7 @@ class RatingRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer_id'=> 'required|exists:customers,id',
+            'user_id'=> 'required|exists:users,id',
             'product_id'=> 'required|exists:products,id',
             'degree'=> ['min:0','max:5','numeric'],
         ];

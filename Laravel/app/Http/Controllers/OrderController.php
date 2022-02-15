@@ -29,7 +29,7 @@ class OrderController extends Controller
             'status'=>$data['status'],
             'phone'=>$data['phone'],
             'payment_method'=>$data['payment_method'],
-            'customer_id'=>$data['customer_id'],
+            'user_id'=>$data['user_id'],
             'cart_id'=>$data['cart_id'],
         ]);
         // return new OrderResource($order);
@@ -54,7 +54,7 @@ class OrderController extends Controller
             'status'=>$req['status'],
             'phone'=>$req['phone'],
             'payment_method'=>$req['payment_method'],
-            'customer_id'=>$req['customer_id'],
+            'user_id'=>$req['user_id'],
             'cart_id'=>$req['cart_id'],
        ]);
     //    return  $oneOrder;

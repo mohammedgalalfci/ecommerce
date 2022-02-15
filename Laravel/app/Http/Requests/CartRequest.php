@@ -27,7 +27,7 @@ class CartRequest extends FormRequest
             'total_price'=>['required','numeric'],
             'products_number'=>['required','numeric'],
             'store_id'=> 'required|exists:stores,id',
-            'customer_id'=> 'required|exists:customers,id',
+            'user_id'=> 'required|exists:users,id',
         ];
     }
 }

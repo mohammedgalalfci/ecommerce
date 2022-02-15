@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CustomerController;
+//use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -69,6 +70,7 @@ Route::get('/products/{product}',[ProductController::class,'show']);
 Route::put('/products/{product}',[ProductController::class,'update']);
 Route::delete('/products/{product}',[ProductController::class,'delete']);
 Route::get('/products/search/{prodName}',[ProductController::class,'search']);
+Route::get('/category/{category}/products',[ProductController::class,'productsForeachCategory']);
 
 /**Routing carts */
 Route::get('/carts',[CartController::class,'index']);
@@ -79,11 +81,18 @@ Route::delete('/carts/{cart}',[CartController::class,'delete']);
 
 
 /**Routing customers */
-Route::get('/customers',[CustomerController::class,'index']);
-Route::post('/customers',[CustomerController::class,'store']);
-Route::get('/customers/{customer}',[CustomerController::class,'show']);
-Route::put('/customers/{customer}',[CustomerController::class,'update']);
-Route::delete('/customers/{customer}',[CustomerController::class,'delete']);
+// Route::get('/customers',[CustomerController::class,'index']);
+// Route::post('/customers',[CustomerController::class,'store']);
+// Route::get('/customers/{customer}',[CustomerController::class,'show']);
+// Route::put('/customers/{customer}',[CustomerController::class,'update']);
+// Route::delete('/customers/{customer}',[CustomerController::class,'delete']);
+
+/**Routing Users */
+Route::get('/users',[UserController::class,'index']);
+Route::post('/users',[UserController::class,'store']);
+Route::get('/users/{user}',[UserController::class,'show']);
+Route::put('/users/{user}',[UserController::class,'update']);
+Route::delete('/users/{user}',[UserController::class,'delete']);
 
 /**Routing ratings */
 Route::get('/ratings',[RatingController::class,'index']);

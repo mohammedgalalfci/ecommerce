@@ -14,8 +14,8 @@ class AddForeignKeyToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->foreignId('customer_id')
-            ->constrained('customers')
+            $table->foreignId('user_id')
+            ->constrained('users')
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');

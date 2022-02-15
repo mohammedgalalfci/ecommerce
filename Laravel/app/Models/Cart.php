@@ -14,7 +14,7 @@ class Cart extends Model
         'products_number',
         'status',
         'store_id',
-        'customer_id'
+        'user_id'
     ];
 
     public function store()
@@ -25,6 +25,10 @@ class Cart extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function order()

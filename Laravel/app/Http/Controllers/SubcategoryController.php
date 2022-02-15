@@ -28,7 +28,7 @@ class SubcategoryController extends Controller
         $oneSubCategory=Subcategory::findOrFail($subcategory);
         return new SubcategoryResource($oneSubCategory);
     }
-    public function update($subcategory,SubcategoryRequest $req){
+    public function update($subcategory,Request $req){
         $oneSubCategory=Subcategory::findOrFail($subcategory);
         $oneSubCategory->update([
             'subcat_name'=>$req['subcat_name'],

@@ -20,8 +20,8 @@ class AddForeignKeyToCartsTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->foreignId('customer_id')
-            ->constrained('customers')
+            $table->foreignId('user_id')
+            ->constrained('users')
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');

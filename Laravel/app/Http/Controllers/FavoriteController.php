@@ -15,7 +15,7 @@ class FavoriteController extends Controller
     public function store(){
         $data = request()->all();
         $favorite=Favorite::create([
-            'customer_id' => $data['customer_id'],
+            'user_id' => $data['user_id'],
             'product_id' => $data['product_id'],
         ]);
         // return new FavoriteResource($favorite);
@@ -29,7 +29,7 @@ class FavoriteController extends Controller
     public function update($favorite,Request $req){
          $oneFavorite=Favorite::findOrFail($favorite);
          $oneFavorite->update([
-            'customer_id' => $req['customer_id'],
+            'user_id' => $req['user_id'],
             'product_id' => $req['product_id'],
         ]);
         // return  $oneFavorite;

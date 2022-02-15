@@ -68,4 +68,8 @@ class ProductController extends Controller
     public function search($proName){
         return Product::where('product_name','like','%'.$proName.'%')->get();
     }
+
+    public function productsForeachCategory($catId){
+        return Product::where('subcat_id','=',$catId)->get();
+    }
 }

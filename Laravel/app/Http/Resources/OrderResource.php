@@ -28,7 +28,7 @@ class OrderResource extends JsonResource
             'status'=>$this->status,
             'phone'=>$this->phone,
             'payment_method'=>$this->payment_method,
-            'customer_id'=>$this->customer_id,
+            'user_id'=>$this->user_id,
             'cart_id'=>$this->cart_id,
         ];
     }

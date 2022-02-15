@@ -22,7 +22,7 @@ class Order extends Model
         'phone',
         'payment_method',
         'full_address',
-        'customer_id',
+        'user_id',
         'cart_id'
 
     ];
@@ -34,5 +34,9 @@ class Order extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
