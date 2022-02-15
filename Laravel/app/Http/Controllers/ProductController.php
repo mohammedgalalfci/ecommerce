@@ -64,4 +64,8 @@ class ProductController extends Controller
         return new ProductResource($oneProduct);
         return response()->json(["message"=>"Product Deleted Successfully"],201);
     }
+
+    public function search($proName){
+        return Product::where('product_name','like','%'.$proName.'%')->get();
+    }
 }
