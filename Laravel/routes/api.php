@@ -13,6 +13,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\ChatController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -107,3 +109,6 @@ Route::post('/stores',[StoreController::class,'store']);
 Route::get('/stores/{store}',[StoreController::class,'show']);
 Route::put('/stores/{store}',[StoreController::class,'update']);
 Route::delete('/stores/{store}',[StoreController::class,'delete']);
+
+/**Chat */
+Route::post('messages',[ChatController::class,'message']);
