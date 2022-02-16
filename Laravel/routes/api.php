@@ -14,6 +14,8 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -121,3 +123,7 @@ Route::group([
     // Route::post('me', 'AuthController@me');
 
 });
+
+/**Chat */
+Route::post('messages',[ChatController::class,'message']);
+

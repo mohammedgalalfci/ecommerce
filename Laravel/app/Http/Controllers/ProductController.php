@@ -27,14 +27,14 @@ class ProductController extends Controller
         $product->product_name=$request->product_name;
         $product->description=$request->description;
         $product->subcat_id=$request->subcat_id;
-        if($request->hasFile('image')){
-            $fileName = $request->file('image')->getClientOriginalName();
-            $nameOnly=pathinfo($fileName,PATHINFO_FILENAME);
-            $extention=$request->file('image')->getClientOriginalExtension();
-            $complexPic=str_replace(' ','_',$nameOnly.'-'.rand().'_'.time().'.'.$extention);
-            $path=$request->file('image')->storeAs('public/products',$complexPic);
-        }
-        $product->image=$complexPic;
+        // if($request->hasFile('image')){
+        //     $fileName = $request->file('image')->getClientOriginalName();
+        //     $nameOnly=pathinfo($fileName,PATHINFO_FILENAME);
+        //     $extention=$request->file('image')->getClientOriginalExtension();
+        //     $complexPic=str_replace(' ','_',$nameOnly.'-'.rand().'_'.time().'.'.$extention);
+        //     $path=$request->file('image')->storeAs('public/products',$complexPic);
+        // }
+        // $product->image=$complexPic;
         $product->save();
         return response()->json(["message"=>"Product Created Successfully"],201);
 
