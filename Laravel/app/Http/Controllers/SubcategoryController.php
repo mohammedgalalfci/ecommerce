@@ -47,4 +47,9 @@ class SubcategoryController extends Controller
         return response()->json(["message"=>"Subcategory Deleted Successfully"],201);
 
     }
+
+    public function subCategoryForeachCategory($catId){
+        $subcategories= Subcategory::where('cat_id','=',$catId)->get();
+        return SubcategoryResource::collection($subcategories);
+    }
 }

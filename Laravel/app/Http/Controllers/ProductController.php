@@ -69,6 +69,6 @@ class ProductController extends Controller
     }
 
     public function productsForeachCategory($catId){
-        return Product::where('subcat_id','=',$catId)->get();
+        return Product::where('subcat_id','=',$catId)->latest()->paginate(2);;
     }
 }
