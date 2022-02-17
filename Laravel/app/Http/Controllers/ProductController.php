@@ -46,8 +46,10 @@ class ProductController extends Controller
     }
 
     public function update($product,Request $req){
-        $req->validate(['product_name'=>'min:3'|'max:25',
-        'description'=>'min:10'| 'max:255']);
+        $req->validate([
+            'product_name'=>['min:3','max:25'],
+        'description'=>['min:10', 'max:255']
+    ]);
         $oneProduct=Product::findOrFail($product);
         $oneProduct->update([
             'product_name' => $req['product_name'],

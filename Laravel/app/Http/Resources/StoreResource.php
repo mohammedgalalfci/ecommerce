@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class StoreResource extends JsonResource
@@ -20,7 +21,8 @@ class StoreResource extends JsonResource
             'size'=>$this->size,
             'color'=>$this->color,
             'discount'=>$this->discount,
-            'product_id'=>$this->product_id,
+            // 'product_id'=>$this->product_id,
+            'product'=> new ProductResource(Product::find($this->product_id)),
         ];
     }
 }

@@ -54,4 +54,8 @@ class StoreController extends Controller
         // return new StoreResource($oneStore);
         return response()->json(["message"=>"Store Deleted Successfully"],201);
     }
+    
+    public function storesForeachProduct($prodId){
+        return Store::where('product_id','=',$prodId)->get();
+    }
 }
