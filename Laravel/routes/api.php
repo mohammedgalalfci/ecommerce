@@ -51,6 +51,7 @@ Route::post('/subcategories',[SubcategoryController::class,'store']);
 Route::get('/subcategories/{subcategory}',[SubcategoryController::class,'show']);
 Route::put('/subcategories/{subcategory}',[SubcategoryController::class,'update']);
 Route::delete('/subcategories/{subcategory}',[SubcategoryController::class,'delete']);
+Route::get('/{category}/subcategories',[SubcategoryController::class,'subCategoryForeachCategory']);
 
 /**Routing Favorite */
 Route::get('/favorites',[FavoriteController::class,'index']);

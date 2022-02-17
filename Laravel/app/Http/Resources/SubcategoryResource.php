@@ -17,6 +17,7 @@ class SubcategoryResource extends JsonResource
         return [
             'id'=>$this->id,
             'subcat_name'=>$this->subcat_name,
+            'cat_id'=>$this->cat_id,
             'category'=>new CategoryResource(Category::find($this->cat_id)),
         ];
     }

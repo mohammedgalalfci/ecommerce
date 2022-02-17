@@ -25,7 +25,7 @@ class SignUpRequest extends FormRequest
     {
         return [
             'name'=>['required', 'min:3', 'max:25'],
-            'email'=>['required', 'email'],
+            'email'=>['required', 'email','unique:users'],
             'password'=>['required', 'min:6'],
             'full_address'=>['required','max:100'],
             'house_no'=>['required'],
