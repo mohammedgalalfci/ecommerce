@@ -74,7 +74,8 @@ Route::get('/products/{product}',[ProductController::class,'show']);
 Route::put('/products/{product}',[ProductController::class,'update']);
 Route::delete('/products/{product}',[ProductController::class,'delete']);
 Route::get('/products/search/{prodName}',[ProductController::class,'search']);
-Route::get('/category/{category}/products',[ProductController::class,'productsForeachCategory']);
+Route::get('/category/{category}/product',[ProductController::class,'specificProductsForeachCategory']);
+Route::get('/category/{category}/products',[ProductController::class,'allProductsForeachCategory']);
 
 /**Routing carts */
 Route::get('/carts',[CartController::class,'index']);

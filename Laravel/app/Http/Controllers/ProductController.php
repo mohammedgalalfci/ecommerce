@@ -70,7 +70,11 @@ class ProductController extends Controller
         return Product::where('product_name','like','%'.$proName.'%')->get();
     }
 
-    public function productsForeachCategory($catId){
-        return Product::where('subcat_id','=',$catId)->latest()->paginate(2);;
+    public function specificProductsForeachCategory($catId){
+        return Product::where('subcat_id','=',$catId)->latest()->paginate(2);
+    }
+
+    public function allProductsForeachCategory($catId){
+        return Product::where('subcat_id','=',$catId)->get();
     }
 }
