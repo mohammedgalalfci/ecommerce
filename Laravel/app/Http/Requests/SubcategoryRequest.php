@@ -24,7 +24,7 @@ class SubcategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'subcat_name'=>['required', 'min:3', 'max:25'],
+            'subcat_name'=>['required','unique:subcategories', 'min:3', 'max:25'],
             'cat_id' => 'required|exists:categories,id',
         ];
     }

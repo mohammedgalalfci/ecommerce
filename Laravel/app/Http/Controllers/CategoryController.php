@@ -27,7 +27,8 @@ class CategoryController extends Controller
         // return new CategoryResource($oneCategory);
         return response()->json(["message"=>"Category Updated successfully"],201);
     }
-    public function update($category,CategoryRequest $req){
+    public function update($category,Request $req){
+        $req->validate(['cat_name'=>['required','unique:categories,id,:id', 'min:3', 'max:25']]);
         $oneCategory=Category::findOrFail($category);
         $oneCategory->update([
             'cat_name' => $req['cat_name'],

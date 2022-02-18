@@ -24,7 +24,7 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'cat_name'=>['required', 'min:3', 'max:25'],
+            'cat_name'=>['required','unique:categories', 'min:3', 'max:25'],
         ];
     }
 }
