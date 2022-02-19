@@ -19,6 +19,12 @@ class AddForignKeyToProductsTable extends Migration
             ->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade');
+
+            $table->foreignId('cat_id')
+            ->constrained('categories')
+            ->nullable()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 

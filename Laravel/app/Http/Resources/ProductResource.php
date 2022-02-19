@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\Subcategory;
+use App\Models\Category;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
@@ -22,6 +23,7 @@ class ProductResource extends JsonResource
             'image'=>$this->image,
             'image_path'=>$this->image_path,
             'subcategory'=> new SubcategoryResource(Subcategory::find($this->subcat_id)),
+            'category'=> new CategoryResource(Category::find($this->cat_id)),
         ];
     }
 }

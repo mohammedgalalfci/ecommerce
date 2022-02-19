@@ -76,6 +76,7 @@ Route::delete('/products/{product}',[ProductController::class,'delete']);
 Route::get('/products/search/{prodName}',[ProductController::class,'search']);
 Route::get('/category/{category}/product',[ProductController::class,'specificProductsForeachCategory']);
 Route::get('/category/{category}/products',[ProductController::class,'allProductsForeachCategory']);
+Route::get('/{category}/products',[ProductController::class,'productsCategory']);
 
 /**Routing carts */
 Route::get('/carts',[CartController::class,'index']);
@@ -118,8 +119,8 @@ Route::group([
     'middleware' => 'api'
 
 ], function ($router) {
-    Route::post('login', [AuthController::class,'login']);
-    Route::post('signup', [AuthController::class,'signup']);
+    Route::post('/login', [AuthController::class,'login']);
+    Route::post('/signup', [AuthController::class,'signup']);
     // Route::post('logout', 'AuthController@logout');
     // Route::post('refresh', 'AuthController@refresh');
     // Route::post('me', 'AuthController@me');

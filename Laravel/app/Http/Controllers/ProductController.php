@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +13,7 @@ class ProductController extends Controller
     public function index(){
         $products=Product::all();
         return ProductResource::collection($products);
-    }
+      }
     public function store(ProductRequest $request){
         // $data = request()->all();
         // $product=Product::create([
@@ -27,6 +28,7 @@ class ProductController extends Controller
         $product->product_name=$request->product_name;
         $product->description=$request->description;
         $product->subcat_id=$request->subcat_id;
+        $product->cat_id=$request->cat_id;
         // if($request->hasFile('image')){
         //     $fileName = $request->file('image')->getClientOriginalName();
         //     $nameOnly=pathinfo($fileName,PATHINFO_FILENAME);
@@ -76,5 +78,9 @@ class ProductController extends Controller
 
     public function allProductsForeachCategory($catId){
         return Product::where('subcat_id','=',$catId)->get();
+    }
+
+    public function productsCategory($catId){
+        return Product::where('cat_id','=',$catId)->get();
     }
 }
