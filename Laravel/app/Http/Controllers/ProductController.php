@@ -15,28 +15,21 @@ class ProductController extends Controller
         return ProductResource::collection($products);
       }
     public function store(ProductRequest $request){
-        // $data = request()->all();
-        // $product=Product::create([
-        //     'product_name' => $data['product_name'],
-        //     'description' => $data['description'],
-        //     'image' => $data['image'],
-        //     'image_path' => $data['image_path'],
-        //     'subcat_id' => $data['subcat_id']
-        // ]);
-        // return new ProductResource($product);
         $product=new Product;
         $product->product_name=$request->product_name;
         $product->description=$request->description;
         $product->subcat_id=$request->subcat_id;
         $product->cat_id=$request->cat_id;
-        // if($request->hasFile('image')){
-        //     $fileName = $request->file('image')->getClientOriginalName();
-        //     $nameOnly=pathinfo($fileName,PATHINFO_FILENAME);
-        //     $extention=$request->file('image')->getClientOriginalExtension();
-        //     $complexPic=str_replace(' ','_',$nameOnly.'-'.rand().'_'.time().'.'.$extention);
-        //     $path=$request->file('image')->storeAs('public/products',$complexPic);
-        // }
-        // $product->image=$complexPic;
+        $data=$product->store($product);
+        if($request->hasFile('image')){
+
+            $fileName = $request->file('image')->getClientOriginalName();
+            $nameOnly=pathinfo($fileName,PATHINFO_FILENAME);
+            $extention=$request->file('image')->getClientOriginalExtension();
+            $complexPic=str_replace(' ','_',$nameOnly.'-'.rand().'_'.time().'.'.$extention);
+            $path=$request->file('image')->move('public/image',$complexPic);
+        }
+        $product->image=$complexPic;
         $product->save();
         return response()->json(["message"=>"Product Created Successfully"],201);
 

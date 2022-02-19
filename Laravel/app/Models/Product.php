@@ -28,6 +28,7 @@ class Product extends Model
 
     public function store()
     {
+        // DB::table('products')->insert($data); /* not sure */
         return $this->hasMany(Store::class);
     }
 
