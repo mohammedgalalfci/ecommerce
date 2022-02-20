@@ -37,7 +37,7 @@ class AuthController extends Controller
 
     public function signup(SignUpRequest $request){
         User::create($request->all());
-        return response()->json(['message' => 'added Successfuly'], 200);
+        return response()->json(['message' => 'added Successfully'], 200);
     }
     /**
      * Get the authenticated User.

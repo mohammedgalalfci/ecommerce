@@ -14,6 +14,7 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\resetPasswordController;
 use App\Http\Controllers\ChatController;
 
 
@@ -121,6 +122,7 @@ Route::group([
 ], function ($router) {
     Route::post('/login', [AuthController::class,'login']);
     Route::post('/signup', [AuthController::class,'signup']);
+   
     // Route::post('logout', 'AuthController@logout');
     // Route::post('refresh', 'AuthController@refresh');
     // Route::post('me', 'AuthController@me');
@@ -130,3 +132,4 @@ Route::group([
 /**Chat */
 Route::post('messages',[ChatController::class,'message']);
 
+ Route::post('/resetPassword', [resetPasswordController::class,'sendEmail']);
