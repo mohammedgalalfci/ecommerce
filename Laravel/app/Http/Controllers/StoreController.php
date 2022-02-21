@@ -15,10 +15,8 @@ class StoreController extends Controller
     public function store(StoreRequest $request){
         $data = request()->all();
         $store=Store::create([
-            'price'=>$data['price'],
             'size'=>$data['size'],
             'color'=>$data['color'],
-            'discount'=>$data['discount'],
             'product_id'=>$data['product_id'],
         ]);
         // return new StoreResource($store);
@@ -31,17 +29,13 @@ class StoreController extends Controller
     }
     public function update($store,Request $req){
         $req->validate([
-        'price'=>['numeric'],
         'size'=>'max:255',
         'color'=>'max:255',
-        'discount'=>'numeric',
         ]);
         $oneStore=Store::findOrFail($store);
         $oneStore->update([
-            'price'=>$req['price'],
             'size'=>$req['size'],
             'color'=>$req['color'],
-            'discount'=>$req['discount'],
             // 'product_id'=>$req['product_id'],
         ]);
         // return $oneStore;
@@ -54,7 +48,7 @@ class StoreController extends Controller
         // return new StoreResource($oneStore);
         return response()->json(["message"=>"Store Deleted Successfully"],201);
     }
-    
+
     public function storesForeachProduct($prodId){
         return Store::where('product_id','=',$prodId)->get();
     }

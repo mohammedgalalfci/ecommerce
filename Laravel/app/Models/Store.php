@@ -10,10 +10,8 @@ class Store extends Model
     use HasFactory;
 
     protected $fillable =[
-        'price',
         'size',
         'color',
-        'discount',
         'product_id'
     ];
 

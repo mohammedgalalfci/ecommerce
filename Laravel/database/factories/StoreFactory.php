@@ -15,10 +15,8 @@ class StoreFactory extends Factory
     {
         return [
 
-            'price' =>$this->faker-> randomDigit(),
             'size' =>$this->faker-> title(),
             'color' =>$this->faker-> colorName(),
-            'discount' => $this->faker-> randomDigit(),
             'product_id' => random_int(1,10),
         ];
     }

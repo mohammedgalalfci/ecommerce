@@ -15,10 +15,8 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->double('price');
             $table->string('size');
             $table->string('color');
-            $table->double('discount');
             $table->timestamps();
 
 

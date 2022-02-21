@@ -26,11 +26,11 @@ class ProductRequest extends FormRequest
         return [
             'product_name'=>['required', 'min:3', 'max:25'],
             'description'=>['required', 'min:10', 'max:255'],
-            //'image'=>['max:255'],
-            // 'image_path'=>['max:255'],
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'price'=>['required','numeric'],
+            'discount'=>'required|numeric',
             'subcat_id' => 'required|exists:subcategories,id',
             'cat_id' => 'required|exists:categories,id',
-            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
         ];
     }

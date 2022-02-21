@@ -14,7 +14,10 @@ class Product extends Model
         'description',
         'image',
         'image_path',
-        'subcat_id'
+        'price',
+        'discount',
+        'subcat_id',
+        'cat_id'
 
     ];
     public function sub_category()

@@ -18,6 +18,8 @@ class ProductController extends Controller
         $product=new Product;
         $product->product_name=$request->product_name;
         $product->description=$request->description;
+        $product->price=$request ->price;
+        $product->discount=$request ->discount;
         $product->subcat_id=$request->subcat_id;
         $product->cat_id=$request->cat_id;
         $data=$product->store($product);
@@ -43,12 +45,16 @@ class ProductController extends Controller
     public function update($product,Request $req){
         $req->validate([
             'product_name'=>['min:3','max:25'],
-        'description'=>['min:10', 'max:255']
+            'description'=>['min:10', 'max:255'],
+            'price'=>['numeric'],
+            'discount'=>'numeric',
     ]);
         $oneProduct=Product::findOrFail($product);
         $oneProduct->update([
             'product_name' => $req['product_name'],
             'description' => $req['description'],
+            'price'=>$req['price'],
+            'discount'=>$req['discount'],
         ]);
         // return $oneProduct;
         return response()->json(["message"=>"Product Updated Successfully"],201);
@@ -65,14 +71,9 @@ class ProductController extends Controller
         return Product::where('product_name','like','%'.$proName.'%')->get();
     }
 
-    public function specificProductsForeachCategory($catId){
+    public function ProductsForeachSubCategory($catId){
         return Product::where('subcat_id','=',$catId)->latest()->paginate(2);
     }
-
-    public function allProductsForeachCategory($catId){
-        return Product::where('subcat_id','=',$catId)->get();
-    }
-
     public function productsCategory($catId){
         return Product::where('cat_id','=',$catId)->get();
     }

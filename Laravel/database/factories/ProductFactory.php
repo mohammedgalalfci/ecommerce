@@ -18,6 +18,8 @@ class ProductFactory extends Factory
             'description' => $this->faker->text(),
             'image'=> $this->faker->image(),
             'image_path'=> $this->faker->image(),
+            'price' =>$this->faker-> randomDigit(),
+            'discount' => $this->faker-> randomDigit(),
             'subcat_id'=> random_int(1,10),
         ];
     }

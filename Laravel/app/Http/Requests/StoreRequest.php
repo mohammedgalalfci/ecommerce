@@ -24,10 +24,8 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'price'=>['required','numeric'],
             'size'=>'required|max:255',
             'color'=>'required|max:255',
-            'discount'=>'required|numeric',
             'product_id'=> 'required|exists:products,id',
         ];
     }

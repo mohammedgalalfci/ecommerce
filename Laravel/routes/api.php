@@ -75,8 +75,7 @@ Route::get('/products/{product}',[ProductController::class,'show']);
 Route::put('/products/{product}',[ProductController::class,'update']);
 Route::delete('/products/{product}',[ProductController::class,'delete']);
 Route::get('/products/search/{prodName}',[ProductController::class,'search']);
-Route::get('/category/{category}/product',[ProductController::class,'specificProductsForeachCategory']);
-Route::get('/category/{category}/products',[ProductController::class,'allProductsForeachCategory']);
+Route::get('/subcategory/{subcategory}/products',[ProductController::class,'ProductsForeachSubCategory']);
 Route::get('/{category}/products',[ProductController::class,'productsCategory']);
 
 /**Routing carts */
@@ -86,13 +85,6 @@ Route::get('/carts/{cart}',[CartController::class,'show']);
 Route::put('/carts/{cart}',[CartController::class,'update']);
 Route::delete('/carts/{cart}',[CartController::class,'delete']);
 
-
-/**Routing customers */
-// Route::get('/customers',[CustomerController::class,'index']);
-// Route::post('/customers',[CustomerController::class,'store']);
-// Route::get('/customers/{customer}',[CustomerController::class,'show']);
-// Route::put('/customers/{customer}',[CustomerController::class,'update']);
-// Route::delete('/customers/{customer}',[CustomerController::class,'delete']);
 
 /**Routing Users */
 Route::get('/users',[UserController::class,'index']);
@@ -122,7 +114,7 @@ Route::group([
 ], function ($router) {
     Route::post('/login', [AuthController::class,'login']);
     Route::post('/signup', [AuthController::class,'signup']);
-   
+
     // Route::post('logout', 'AuthController@logout');
     // Route::post('refresh', 'AuthController@refresh');
     // Route::post('me', 'AuthController@me');
