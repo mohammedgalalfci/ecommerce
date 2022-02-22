@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Http\Models\Subcategory;
 class Product extends Model
 {
     use HasFactory;
@@ -20,6 +20,11 @@ class Product extends Model
         'cat_id'
 
     ];
+    // protected $append =['cat_id'];
+    // public function getCat($id){
+    //     $catId=Subcategory::select('cat_id')->where('id',$id)->get();
+    //     return $catId;
+    // }
     public function sub_category()
     {
         return $this->belongsTo(Subcategory::class);

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
-use Validator;
-use Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 class AdminAuthController extends Controller
 {
     use GeneralTrait;
@@ -31,7 +31,7 @@ class AdminAuthController extends Controller
            $token =  Auth::guard('admin-api') -> attempt($credentials);
            if(!$token)
            return $this->returnError('E001','Email Or Password Not Exists !');
-           return $this -> returnData('token' , $token);
+           return $this -> returnData('adminToken' , $token);
 
         }catch (\Exception $ex){
             return $this->returnError($ex->getCode(), $ex->getMessage());
