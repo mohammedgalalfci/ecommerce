@@ -16,6 +16,8 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\resetPasswordController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\Admin\AdminAuthController;
+
 
 
 /*
@@ -126,3 +128,15 @@ Route::group([
 Route::post('messages',[ChatController::class,'message']);
 
  Route::post('/resetPassword', [resetPasswordController::class,'sendEmail']);
+
+ Route::group([
+
+   // 'middleware' => 'checkAdminToken'
+
+], function ($router) {
+Route::group(['prefix' => 'admin'],function (){
+    Route::post('login', [AdminAuthController::class,'login']);
+    Route::post('signup', [AdminAuthController::class,'signup']);
+});
+
+});
