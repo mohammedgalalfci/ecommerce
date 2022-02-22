@@ -77,6 +77,7 @@ Route::delete('/products/{product}',[ProductController::class,'delete']);
 Route::get('/products/search/{prodName}',[ProductController::class,'search']);
 Route::get('/subcategory/{subcategory}/products',[ProductController::class,'ProductsForeachSubCategory']);
 Route::get('/{category}/products',[ProductController::class,'productsCategory']);
+Route::get('/{subcategory}/allProducts',[ProductController::class,'getAllProductsForSubCategory']);
 
 /**Routing carts */
 Route::get('/carts',[CartController::class,'index']);

@@ -74,6 +74,9 @@ class ProductController extends Controller
     public function ProductsForeachSubCategory($catId){
         return Product::where('subcat_id','=',$catId)->latest()->paginate(2);
     }
+    public function getAllProductsForSubCategory($catId){
+        return Product::where('subcat_id','=',$catId)->get();
+    }
     public function productsCategory($catId){
         return Product::where('cat_id','=',$catId)->get();
     }
