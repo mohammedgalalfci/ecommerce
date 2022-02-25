@@ -1,19 +1,31 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Resources\CartResource;
 use App\Models\Cart;
+use App\Models\Store;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\CartRequest;
 
 class CartController extends Controller
 {
-    public function index(){
+    public function index($id){
         $carts=Cart::all();
         return CartResource::collection($carts);
-        // return response()->json([CartResource::collection($carts)],200);
+        return response()->json([CartResource::collection($carts)],200);    
 
+    }
+    public function cartsForEachUser($id){
+        return  $carts = DB::table('carts')
+                ->select('products_number','total_price','product_name')
+                ->join('stores', 'carts.store_id', '=', 'stores.id')
+                ->join('products','stores.product_id','=','products.id')
+                ->join('users', 'carts.user_id', '=', 'users.id')
+                ->where('carts.user_id', '=',$id)
+                ->where('carts.status', '=', 'waiting')
+                ->get();
     }
     public function store(CartRequest $request){
         $data = request()->all();

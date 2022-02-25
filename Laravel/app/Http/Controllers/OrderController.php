@@ -14,6 +14,7 @@ class OrderController extends Controller
         // return response()->json([OrderResource::collection($orders)],200);
 
     }
+   
     public function store(OrderRequest $request){
         $data = request()->all();
         $order=Order::create([

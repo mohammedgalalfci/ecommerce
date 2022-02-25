@@ -80,13 +80,13 @@ Route::get('/products/search/{prodName}',[ProductController::class,'search']);
 Route::get('/subcategory/{subcategory}/products',[ProductController::class,'ProductsForeachSubCategory']);
 Route::get('/{category}/products',[ProductController::class,'productsCategory']);
 Route::get('/{subcategory}/{category}/products',[ProductController::class,'getAllProductsForSubCategory']);
-
 /**Routing carts */
 Route::get('/carts',[CartController::class,'index']);
 Route::post('/carts',[CartController::class,'store']);
 Route::get('/carts/{cart}',[CartController::class,'show']);
 Route::put('/carts/{cart}',[CartController::class,'update']);
 Route::delete('/carts/{cart}',[CartController::class,'delete']);
+Route::get('/cart/{cart}',[CartController::class,'cartsForEachUser']);
 
 
 /**Routing Users */
