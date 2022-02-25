@@ -80,6 +80,11 @@ Route::get('/products/search/{prodName}',[ProductController::class,'search']);
 Route::get('/subcategory/{subcategory}/products',[ProductController::class,'ProductsForeachSubCategory']);
 Route::get('/{category}/products',[ProductController::class,'productsCategory']);
 Route::get('/{subcategory}/{category}/products',[ProductController::class,'getAllProductsForSubCategory']);
+<<<<<<< HEAD
+=======
+Route::get('/discounts',[ProductController::class,'productDiscount']);
+
+>>>>>>> 29bddea137a5425d80c9484570bc6d7be584fda6
 /**Routing carts */
 Route::get('/carts',[CartController::class,'index']);
 Route::post('/carts',[CartController::class,'store']);
