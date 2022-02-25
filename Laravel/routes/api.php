@@ -80,6 +80,7 @@ Route::get('/products/search/{prodName}',[ProductController::class,'search']);
 Route::get('/subcategory/{subcategory}/products',[ProductController::class,'ProductsForeachSubCategory']);
 Route::get('/{category}/products',[ProductController::class,'productsCategory']);
 Route::get('/{subcategory}/{category}/products',[ProductController::class,'getAllProductsForSubCategory']);
+Route::get('/discounts',[ProductController::class,'productDiscount']);
 
 /**Routing carts */
 Route::get('/carts',[CartController::class,'index']);

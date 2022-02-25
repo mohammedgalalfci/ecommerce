@@ -7,7 +7,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     public function index(){
@@ -79,5 +79,10 @@ class ProductController extends Controller
     }
     public function productsCategory($catId){
         return Product::where('cat_id','=',$catId)->get();
+    }
+
+    public function productDiscount(){
+        return Product::select(DB::raw('products.*,(price * discount/100) as newPrice'))->orderBy('newPrice','DESC')->take(8)
+        ->get();
     }
 }
