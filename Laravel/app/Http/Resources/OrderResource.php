@@ -16,11 +16,11 @@ class OrderResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'order_number'=>$this->order_number,
+            // 'order_number'=>$this->order_number,
             'name'=>$this->name,
             'discount'=>$this->discount,
             'price'=>$this->price,
-            'quantity'=>$this->quantity,
+            // 'quantity'=>$this->quantity,
             'country'=>$this->country,
             'city'=>$this->city,
             'full_address'=>$this->full_address,
@@ -29,7 +29,7 @@ class OrderResource extends JsonResource
             'phone'=>$this->phone,
             'payment_method'=>$this->payment_method,
             'user_id'=>$this->user_id,
-            'cart_id'=>$this->cart_id,
+            // 'cart_id'=>$this->cart_id,
         ];
     }
 }

@@ -70,6 +70,13 @@ Route::get('/orders/{order}',[OrderController::class,'show']);
 Route::put('/orders/{order}',[OrderController::class,'update']);
 Route::delete('/orders/{order}',[OrderController::class,'delete']);
 
+/**Routing Order Details*/
+Route::get('/order_details',[OrderController::class,'index']);
+Route::post('/order_details',[OrderController::class,'store']);
+Route::get('/order_details/{order}',[OrderController::class,'show']);
+// Route::put('/order_details/{order}',[OrderController::class,'update']);
+Route::delete('/order_details/{order}',[OrderController::class,'delete']);
+
 /**Routing product */
 Route::get('/products',[ProductController::class,'index']);
 Route::post('/products',[ProductController::class,'store']);
@@ -80,11 +87,8 @@ Route::get('/products/search/{prodName}',[ProductController::class,'search']);
 Route::get('/subcategory/{subcategory}/products',[ProductController::class,'ProductsForeachSubCategory']);
 Route::get('/{category}/products',[ProductController::class,'productsCategory']);
 Route::get('/{subcategory}/{category}/products',[ProductController::class,'getAllProductsForSubCategory']);
-<<<<<<< HEAD
-=======
 Route::get('/discounts',[ProductController::class,'productDiscount']);
 
->>>>>>> 29bddea137a5425d80c9484570bc6d7be584fda6
 /**Routing carts */
 Route::get('/carts',[CartController::class,'index']);
 Route::post('/carts',[CartController::class,'store']);
