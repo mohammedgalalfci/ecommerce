@@ -40,7 +40,7 @@ class UserController extends Controller
         $req->validate([
             'name'=>['min:3', 'max:25'],
             'email'=>['email'],
-            'password'=>['min:6'],
+            // 'password'=>['min:6'],
             'full_address'=>['max:100'],
             'house_no'=>['numeric'],
             'phone'=>['min:11','max:11','regex:/01[0125][0-9]{8}/'],
@@ -49,7 +49,7 @@ class UserController extends Controller
         $oneUser->update([
             'name' => $req['name'],
             'email' => $req['email'],
-            'password' => $req['password'],
+            // 'password' => $req['password'],
             'full_address' => $req['full_address'],
             'house_no' => $req['house_no'],
             'country' => $req['country'],
