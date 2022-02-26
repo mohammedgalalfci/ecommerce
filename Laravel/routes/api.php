@@ -18,6 +18,7 @@ use App\Http\Controllers\resetPasswordController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\FatoorahController;
+use App\Http\Controllers\ContactUsController;
 
 
 
@@ -121,8 +122,8 @@ Route::put('/stores/{store}',[StoreController::class,'update']);
 Route::delete('/stores/{store}',[StoreController::class,'delete']);
 
 /**Routing Contact Us*/
-Route::get('/contact_us',[OrderController::class,'index']);
-Route::post('/contact_us',[OrderController::class,'store']);
+Route::get('/contact_us',[ContactUsController::class,'index']);
+Route::post('/contact_us',[ContactUsController::class,'store']);
 
 
 Route::group([
@@ -157,5 +158,5 @@ Route::group(['prefix' => 'admin'],function (){
 });
 
 Route::post('pay',[FatoorahController::class, 'payOrder']);
-Route::get('pay', [FatoorahController::class, 'payOrder']);
+//Route::get('pay', [FatoorahController::class, 'payOrder']);
 Route::get('call_back', [FatoorahController::class, 'callBack']);
