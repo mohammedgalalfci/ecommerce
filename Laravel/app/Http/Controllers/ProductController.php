@@ -90,4 +90,10 @@ class ProductController extends Controller
         return Product::select(DB::raw('products.*,(price * discount/100) as newPrice'))->orderBy('newPrice','DESC')->take(8)
         ->get();
     }
+    public function getAllProductsForSubCategory($SubCatId,$catId){
+        return Product::where([
+            ['subcat_id', '=', $SubCatId],
+            ['cat_id','=',$catId]
+        ])->get();
+    }
 }
