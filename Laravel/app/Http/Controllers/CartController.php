@@ -19,7 +19,7 @@ class CartController extends Controller
     }
     public function cartsForEachUser($id){
         return  $carts = DB::table('carts')
-                ->select('products_number','total_price','product_name')
+                ->select('products_number','total_price','product_name','cat_id','status')
                 ->join('stores', 'carts.store_id', '=', 'stores.id')
                 ->join('products','stores.product_id','=','products.id')
                 ->join('users', 'carts.user_id', '=', 'users.id')
