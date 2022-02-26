@@ -14,6 +14,13 @@ class ProductController extends Controller
         $products=Product::all();
         return ProductResource::collection($products);
       }
+    //   public function productsForEachCategory($id){
+    //     return  $categories = DB::table('carts')
+    //             ->select('cat_name')
+    //             ->join('subcategoreis', 'subcategories.cat_id', '=', 'categories.id')
+    //             ->join('categories','categories.id','=','subcategories.cat_id')
+    //             ->get();
+    // }
     public function store(ProductRequest $request){
         $product=new Product;
         $product->product_name=$request->product_name;
@@ -74,9 +81,7 @@ class ProductController extends Controller
     public function ProductsForeachSubCategory($catId){
         return Product::where('subcat_id','=',$catId)->latest()->paginate(2);
     }
-    public function getAllProductsForSubCategory($subCatId,$catId){
-        return Product::where(['subcat_id'=>$subCatId,'cat_id'=>$catId])->get();
-    }
+
     public function productsCategory($catId){
         return Product::where('cat_id','=',$catId)->get();
     }
@@ -84,5 +89,11 @@ class ProductController extends Controller
     public function productDiscount(){
         return Product::select(DB::raw('products.*,(price * discount/100) as newPrice'))->orderBy('newPrice','DESC')->take(8)
         ->get();
+    }
+    public function getAllProductsForSubCategory($SubCatId,$catId){
+        return Product::where([
+            ['subcat_id', '=', $SubCatId],
+            ['cat_id','=',$catId]
+        ])->get();
     }
 }

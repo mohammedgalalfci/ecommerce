@@ -20,11 +20,11 @@ class AddForeignKeyToOrdersTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->foreignId('cart_id')
-            ->constrained('carts')
-            ->nullable()
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            // $table->foreignId('cart_id')
+            // ->constrained('carts')
+            // ->nullable()
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
         });
     }
 
