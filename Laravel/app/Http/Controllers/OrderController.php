@@ -14,15 +14,15 @@ class OrderController extends Controller
         // return response()->json([OrderResource::collection($orders)],200);
 
     }
-   
+
     public function store(OrderRequest $request){
         $data = request()->all();
         $order=Order::create([
-            'order_number'=>$data['order_number'],
+            // 'order_number'=>$data['order_number'],
             'name'=>$data['name'],
             'discount'=>$data['discount'],
             'price'=>$data['price'],
-            'quantity'=>$data['quantity'],
+            // 'quantity'=>$data['quantity'],
             'full_address'=>$data['full_address'],
             'country'=>$data['country'],
             'city'=>$data['city'],
@@ -31,7 +31,7 @@ class OrderController extends Controller
             'phone'=>$data['phone'],
             'payment_method'=>$data['payment_method'],
             'user_id'=>$data['user_id'],
-            'cart_id'=>$data['cart_id'],
+            // 'cart_id'=>$data['cart_id'],
         ]);
         // return new OrderResource($order);
         return response()->json(["message"=>"Order Created Successfully"],201);

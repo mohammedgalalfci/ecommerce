@@ -25,17 +25,17 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'order_number'=>['required',Rule::unique('orders','order_number')->ignore($this->order)],
+            // 'order_number'=>['required',Rule::unique('orders','order_number')->ignore($this->order)],
             'name'=>['required', 'min:3', 'max:25'],
             'discount'=>['numeric'],
             'price'=>['required','numeric'],
-            'quantity'=>['required','numeric'],
+            // 'quantity'=>['required','numeric'],
             'country'=>['required'],
             'city'=>['required'],
             'full_address'=>['required'],
             'phone'=>['required','min:11','max:11','regex:/(01)[0-9]{9}/'],
             'user_id'=> 'required|exists:users,id',
-            'cart_id'=> 'required|exists:carts,id',
+            // 'cart_id'=> 'required|exists:carts,id',
         ];
     }
 }

@@ -71,6 +71,13 @@ Route::get('/orders/{order}',[OrderController::class,'show']);
 Route::put('/orders/{order}',[OrderController::class,'update']);
 Route::delete('/orders/{order}',[OrderController::class,'delete']);
 
+/**Routing Order Details*/
+Route::get('/order_details',[OrderController::class,'index']);
+Route::post('/order_details',[OrderController::class,'store']);
+Route::get('/order_details/{order}',[OrderController::class,'show']);
+// Route::put('/order_details/{order}',[OrderController::class,'update']);
+Route::delete('/order_details/{order}',[OrderController::class,'delete']);
+
 /**Routing product */
 Route::get('/products',[ProductController::class,'index']);
 Route::post('/products',[ProductController::class,'store']);
@@ -112,6 +119,11 @@ Route::post('/stores',[StoreController::class,'store']);
 Route::get('/stores/{store}',[StoreController::class,'show']);
 Route::put('/stores/{store}',[StoreController::class,'update']);
 Route::delete('/stores/{store}',[StoreController::class,'delete']);
+
+/**Routing Contact Us*/
+Route::get('/contact_us',[OrderController::class,'index']);
+Route::post('/contact_us',[OrderController::class,'store']);
+
 
 Route::group([
 
