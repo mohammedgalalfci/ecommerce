@@ -119,6 +119,11 @@ Route::get('/stores/{store}',[StoreController::class,'show']);
 Route::put('/stores/{store}',[StoreController::class,'update']);
 Route::delete('/stores/{store}',[StoreController::class,'delete']);
 
+/**Routing Contact Us*/
+Route::get('/contact_us',[OrderController::class,'index']);
+Route::post('/contact_us',[OrderController::class,'store']);
+
+
 Route::group([
 
     'middleware' => 'api'

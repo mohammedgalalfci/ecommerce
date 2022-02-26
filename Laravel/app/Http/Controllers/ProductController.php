@@ -14,6 +14,13 @@ class ProductController extends Controller
         $products=Product::all();
         return ProductResource::collection($products);
       }
+    //   public function productsForEachCategory($id){
+    //     return  $categories = DB::table('carts')
+    //             ->select('cat_name')
+    //             ->join('subcategoreis', 'subcategories.cat_id', '=', 'categories.id')
+    //             ->join('categories','categories.id','=','subcategories.cat_id')
+    //             ->get();
+    // }
     public function store(ProductRequest $request){
         $product=new Product;
         $product->product_name=$request->product_name;
