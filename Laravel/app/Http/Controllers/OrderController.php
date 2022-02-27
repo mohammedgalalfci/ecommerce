@@ -39,7 +39,7 @@ class OrderController extends Controller
                 
             ]);
             $carts = DB::table('carts')
-                ->select('id')
+                ->select('id','status')
                 ->where('carts.user_id', '=',$order->user_id)
                 ->where('carts.status', '=', 'waiting')
                 ->get();
@@ -47,8 +47,11 @@ class OrderController extends Controller
                 OrderDetails::create([
                     'order_id' => $order->id,
                     'cart_id'=>$carts[$i]->id
-                ]);
+                ]); 
+                DB::table('carts')
+                ->update(['status'=>'completed']);
             }
+            
             
         });
         
