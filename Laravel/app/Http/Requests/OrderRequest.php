@@ -35,6 +35,7 @@ class OrderRequest extends FormRequest
             'full_address'=>['required'],
             'phone'=>['required','min:11','max:11','regex:/(01)[0-9]{9}/'],
             'user_id'=> 'required|exists:users,id',
+            'house_no'=> ['required','numeric'],
             // 'cart_id'=> 'required|exists:carts,id',
         ];
     }

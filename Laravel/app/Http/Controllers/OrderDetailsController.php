@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrderDetailsRequest;
 use App\Http\Resources\OrderDetailsResource;
 use App\Models\OrderDetails;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class OrderDetailsController extends Controller
@@ -13,6 +14,16 @@ class OrderDetailsController extends Controller
         $order_details=OrderDetails::all();
         return OrderDetailsResource::collection($order_details);
 
+    }
+    public function viewOrderForeachCart($id){
+        return  $carts = DB::table('order_details')
+        // ->select('products_number','total_price','product_name','order_id')
+        ->join('orders', 'order_details.order_id', '=', 'orders.id')
+        ->join('carts', 'order_details.cart_id', '=', 'carts.id')
+        ->join('stores', 'carts.store_id', '=', 'stores.id')
+        ->join('products','stores.product_id','=','products.id')
+        ->where('order_id', '=',$id)
+        ->get();
     }
     public function store(OrderDetailsRequest $request){
         $data = request()->all();
