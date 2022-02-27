@@ -11,10 +11,9 @@ use App\Http\Requests\CartRequest;
 
 class CartController extends Controller
 {
-    public function index($id){
+    public function index(){
         $carts=Cart::all();
         return CartResource::collection($carts);
-        return response()->json([CartResource::collection($carts)],200);    
 
     }
     public function cartsForEachUser($id){

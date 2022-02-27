@@ -19,8 +19,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\FatoorahController;
 use App\Http\Controllers\ContactUsController;
-
-
+use App\Http\Controllers\OrderDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,11 +72,12 @@ Route::put('/orders/{order}',[OrderController::class,'update']);
 Route::delete('/orders/{order}',[OrderController::class,'delete']);
 
 /**Routing Order Details*/
-Route::get('/order_details',[OrderController::class,'index']);
-Route::post('/order_details',[OrderController::class,'store']);
-Route::get('/order_details/{order}',[OrderController::class,'show']);
-// Route::put('/order_details/{order}',[OrderController::class,'update']);
-Route::delete('/order_details/{order}',[OrderController::class,'delete']);
+Route::get('/order_details',[OrderDetailsController::class,'index']);
+Route::post('/order_details',[OrderDetailsController::class,'store']);
+Route::get('/order_details/{order}',[OrderDetailsController::class,'show']);
+// Route::put('/order_details/{order}',[OrderDetailsController::class,'update']);
+Route::delete('/order_details/{order}',[OrderDetailsController::class,'delete']);
+Route::get('view/order_details/{id}',[OrderDetailsController::class,'viewOrderForeachCart']);
 
 /**Routing product */
 Route::get('/products',[ProductController::class,'index']);

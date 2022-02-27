@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Store;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CartResource extends JsonResource
@@ -21,6 +22,7 @@ class CartResource extends JsonResource
             'status'=>$this->status,
             'store_id'=>$this->store_id,
             'user_id'=>$this->user_id,
+            'Store'=> new StoreResource(Store::find($this->store_id)),
         ];
     }
 }
