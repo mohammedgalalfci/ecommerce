@@ -23,6 +23,7 @@ class Order extends Model
         'payment_method',
         'full_address',
         'user_id',
+        'created_at'
         // 'cart_id'
 
     ];

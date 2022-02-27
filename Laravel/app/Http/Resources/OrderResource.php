@@ -29,6 +29,7 @@ class OrderResource extends JsonResource
             'phone'=>$this->phone,
             'payment_method'=>$this->payment_method,
             'user_id'=>$this->user_id,
+            'created_at'=>$this->created_at
             // 'cart_id'=>$this->cart_id,
         ];
     }
