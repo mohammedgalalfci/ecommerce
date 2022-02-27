@@ -17,7 +17,7 @@ class OrderController extends Controller
 
     }
 
-    public function store(){
+    public function store(OrderRequest $request){
         
         
         DB::transaction(function(){
