@@ -8,7 +8,7 @@ use App\Http\Resources\FavoriteResource;
 class FavoriteController extends Controller
 {
     public function index(){
-        $favorites=Favorite::all();
+        $favorites=Favorite::orderBy('id', 'DESC')->get();
         return FavoriteResource::collection($favorites);
         // return response()->json([FavoriteResource::collection($favorites)],200);
     }

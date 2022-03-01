@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     public function index(){
-        $customers=Customer::all();
+        $customers=Customer::orderBy('id', 'DESC')->get();
         return CustomerResource::collection($customers);
         // return response()->json([CustomerResource::collection($customers)],200);
     }

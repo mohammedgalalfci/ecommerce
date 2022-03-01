@@ -9,7 +9,7 @@ use App\Http\Requests\RatingRequest;
 class RatingController extends Controller
 {
     public function index(){
-        $ratings=Rating::all();
+        $ratings=Rating::orderBy('id', 'DESC')->get();
         return RatingResource::collection($ratings);
     }
     public function store(RatingRequest $request){

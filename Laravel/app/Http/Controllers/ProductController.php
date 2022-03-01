@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     public function index(){
-        $products=Product::all();
+        $products=Product::orderBy('id', 'DESC')->get();
         return ProductResource::collection($products);
       }
     //   public function productsForEachCategory($id){

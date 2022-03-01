@@ -9,7 +9,7 @@ use App\Http\Resources\AdminResource;
 class AdminController extends Controller
 {
     public function index(){
-        $admins=Admin::all();
+        $admins=Admin::orderBy('id', 'DESC')->get();
         return AdminResource::collection($admins);
         // return response()->json([AdminResource::collection($admins)],200);
     }
