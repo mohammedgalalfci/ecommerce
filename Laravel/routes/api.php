@@ -113,6 +113,7 @@ Route::post('/ratings',[RatingController::class,'store']);
 Route::get('/ratings/{rating}',[RatingController::class,'show']);
 Route::put('/ratings/{rating}',[RatingController::class,'update']);
 Route::delete('/ratings/{rating}',[RatingController::class,'delete']);
+Route::get('{user_id}/{product_id}/ratings',[RatingController::class,'check']);
 
 /**Routing stores */
 Route::get('/stores',[StoreController::class,'index']);

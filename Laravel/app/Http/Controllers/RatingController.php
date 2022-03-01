@@ -27,7 +27,12 @@ class RatingController extends Controller
         $oneRating=Rating::findOrFail($rating);
         return new RatingResource($oneRating);
     }
-
+    public function check($user_id,$product_id){
+        return Rating::where([
+             ['user_id', '=', $user_id],
+            ['product_id','=',$product_id]
+    ])->get();
+    }
     public function update($rating,Request $req){
         $req->validate([
         'user_id'=> 'exists:users,id',
