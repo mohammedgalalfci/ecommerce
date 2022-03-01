@@ -85,7 +85,6 @@ class ProductController extends Controller
     public function productsCategory($catId){
         return Product::where('cat_id','=',$catId)->get();
     }
-
     public function productDiscount(){
         return Product::select(DB::raw('products.*,(price * discount/100) as newPrice'))->orderBy('newPrice','DESC')->take(8)
         ->get();
