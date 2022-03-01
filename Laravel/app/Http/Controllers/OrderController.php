@@ -11,7 +11,7 @@ use App\Http\Requests\OrderRequest;
 class OrderController extends Controller
 {
     public function index(){
-        $orders=Order::all();
+        $orders=Order::orderBy('id', 'DESC')->get();
         return OrderResource::collection($orders);
         // return response()->json([OrderResource::collection($orders)],200);
 

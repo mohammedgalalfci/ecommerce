@@ -9,7 +9,7 @@ use App\Http\Requests\StoreRequest;
 class StoreController extends Controller
 {
     public function index(){
-        $stores=Store::all();
+        $stores=Store::orderBy('id', 'DESC')->get();
         return StoreResource::collection($stores);
     }
     public function store(StoreRequest $request){

@@ -12,13 +12,13 @@ use App\Http\Requests\CartRequest;
 class CartController extends Controller
 {
     public function index(){
-        $carts=Cart::all();
+        $carts=Cart::orderBy('id', 'DESC')->get();
         return CartResource::collection($carts);
 
     }
     public function cartsForEachUser($id){
         return  $carts = DB::table('carts')
-                ->select('products_number','total_price','product_name','cat_id','status')
+                ->select('carts.id','store_id','image','discount','product_id','price','color','size','products_number','total_price','product_name','cat_id','status')
                 ->join('stores', 'carts.store_id', '=', 'stores.id')
                 ->join('products','stores.product_id','=','products.id')
                 ->join('users', 'carts.user_id', '=', 'users.id')

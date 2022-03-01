@@ -10,7 +10,7 @@ use App\Models\Subcategory;
 class SubcategoryController extends Controller
 {
     public function index(){
-        $subcategories=Subcategory::all();
+        $subcategories=Subcategory::orderBy('id', 'DESC')->get();
         return SubcategoryResource::collection($subcategories);
         // return response()->json([SubcategoryResource::collection($subcategories)],200);
     }

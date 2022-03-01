@@ -124,7 +124,9 @@ Route::delete('/stores/{store}',[StoreController::class,'delete']);
 
 /**Routing Contact Us*/
 Route::get('/contact_us',[ContactUsController::class,'index']);
+Route::get('/contact_us/{contact}',[ContactUsController::class,'show']);
 Route::post('/contact_us',[ContactUsController::class,'store']);
+Route::put('/contact_us/{contact}',[ContactUsController::class,'update']);
 
 
 Route::group([
