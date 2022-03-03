@@ -29,7 +29,7 @@ class OrderRequest extends FormRequest
             'name'=>['required', 'min:3', 'max:25'],
             'discount'=>['numeric'],
             'price'=>['required','numeric'],
-            // 'quantity'=>['required','numeric'],
+            'email'=>['required','email'],
             'country'=>['required'],
             'city'=>['required'],
             'full_address'=>['required'],
