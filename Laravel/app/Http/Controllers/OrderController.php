@@ -8,6 +8,8 @@ use App\Models\Cart;
 use App\Models\OrderDetails;
 use App\Http\Resources\OrderResource;
 use App\Http\Requests\OrderRequest;
+use App\Mail\OrderMail;
+use Illuminate\Support\Facades\Mail;
 class OrderController extends Controller
 {
     public function index(){
@@ -27,7 +29,7 @@ class OrderController extends Controller
                 'name'=>$data['name'],
                 'discount'=>$data['discount'],
                 'price'=>$data['price'],
-                // 'quantity'=>$request['quantity'],
+                'email'=>$data['email'],
                 'full_address'=>$data['full_address'],
                 'country'=>$data['country'],
                 'city'=>$data['city'],
@@ -52,11 +54,14 @@ class OrderController extends Controller
                 ->update(['status'=>'completed']);
             }
             
-            
+            $this->sendOrderEmail($order);
         });
         
         // return new OrderResource($order);
         return response()->json(["message"=>"Order Created Successfully"],201);
+    }
+    public function sendOrderEmail($order){
+        Mail::to($order->email)->send(new OrderMail($order));
     }
     public function show($order){
         $oneOrder=Order::findOrFail($order);
@@ -74,7 +79,6 @@ class OrderController extends Controller
        return response()->json(["message"=>"Order Updated Successfully"],201);
 
    }
-
     public function delete($order){
         $oneOrder=Order::findOrFail($order);
         $oneOrder->delete();

@@ -14,7 +14,7 @@ class Order extends Model
         'name',
         'discount',
         'price',
-        // 'quantity',
+        'email',
         'country',
         'city',
         'house_no',
