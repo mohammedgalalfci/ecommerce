@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\FatoorahController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\OrderDetailsController;
-
+use Illuminate\Support\Str;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -146,7 +146,7 @@ Route::group([
 /**Chat */
 Route::post('messages',[ChatController::class,'message']);
 
- Route::post('/resetPassword', [resetPasswordController::class,'sendEmail']);
+Route::post('/resetPassword', [resetPasswordController::class,'sendEmail']);
 
  Route::group([
 
@@ -163,3 +163,4 @@ Route::group(['prefix' => 'admin'],function (){
 Route::post('pay',[FatoorahController::class, 'payOrder']);
 //Route::get('pay', [FatoorahController::class, 'payOrder']);
 Route::get('call_back', [FatoorahController::class, 'callBack']);
+Route::get('phpinfo', fn () => phpinfo());

@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ResetPasswordMail;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 class resetPasswordController extends Controller
 {
     public function sendEmail(Request $request){
-        if($this->validateEmail($request->email)){
+        if(!$this->validateEmail($request->email)){
             return $this->failedResponse();
         }
        $this->send($request->email);
@@ -19,14 +25,39 @@ class resetPasswordController extends Controller
     }
 
     public function failedResponse(){
-        return response()->json(['error'=>'Email Not Found !']);
+        return response()->json([
+            'error' => 'Email does\'t found on our database'
+        ], Response::HTTP_NOT_FOUND);
     }
 
     public function successResponse(){
-        return response()->json(['message'=>'Please Check Ur Inbox']);
+        return response()->json([
+            'data' => 'Reset Email is send successfully, please check your inbox.'
+        ], Response::HTTP_OK);
     }
 
     public function send($email){
-        Mail::to($email)->send(new resetPasswordEmail);
+        $token = $this->createToken($email);
+        Mail::to($email)->send(new resetPasswordEmail($token));
+    }
+    public function createToken($email)
+    {
+        $oldToken = DB::table('password_resets')->where('email', $email)->first();
+
+        if ($oldToken) {
+            return $oldToken->token;
+        }
+
+        $token = str_random(60);
+        $this->saveToken($token, $email);
+        return $token;
+    }
+    public function saveToken($token, $email)
+    {
+        DB::table('password_resets')->insert([
+            'email' => $email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
     }
 }
