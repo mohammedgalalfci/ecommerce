@@ -18,6 +18,12 @@ class OrderController extends Controller
         // return response()->json([OrderResource::collection($orders)],200);
 
     }
+    public function getOrdersCount(){
+        return  DB::table('orders')
+        ->select(DB::raw('COUNT(*)'))           
+        ->where("status","=","pending")
+        ->get();
+    }
 
     public function store(OrderRequest $request){
         
