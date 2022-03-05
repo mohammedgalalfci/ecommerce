@@ -27,11 +27,11 @@ class SignUpRequest extends FormRequest
             'name'=>['required', 'min:3', 'max:25'],
             'email'=>['required', 'email','unique:users'],
             'password'=>['required', 'min:6'],
-            'full_address'=>['required','max:100'],
-            'house_no'=>['required'],
-            'country'=>['required'],
-            'city'=>['required'],
-            'phone'=>['required','min:11', 'max:11'],
+            'full_address'=>['max:100'],
+            // 'house_no'=>['required'],
+            // 'country'=>['required'],
+            // 'city'=>['required'],
+            'phone'=>['min:11', 'max:11'],
         ];
     }
 }
