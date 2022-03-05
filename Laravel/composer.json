@@ -9,11 +9,11 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
+        "laravel/helpers": "^1.5",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "tymon/jwt-auth":"^1.0.0-rc.2",
-
-        "pusher/pusher-php-server": "5.0.3"
+        "pusher/pusher-php-server": "5.0.3",
+        "tymon/jwt-auth": "^1.0.0-rc.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

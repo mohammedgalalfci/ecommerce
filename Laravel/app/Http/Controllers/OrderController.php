@@ -85,4 +85,10 @@ class OrderController extends Controller
         // return new OrderResource($oneOrder);
         return response()->json(["message"=>"Order Deleted Successfully"],201);
     }
+    public function getOrdersCount(){
+        return DB::table('orders')
+        ->select(DB::raw('COUNT(*)')) 
+        ->where("status","=","pending")
+        ->get();
+        }
 }

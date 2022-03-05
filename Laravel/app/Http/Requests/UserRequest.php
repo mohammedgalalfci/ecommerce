@@ -28,11 +28,11 @@ class UserRequest extends FormRequest
             // 'email'=>['required','email', Rule::unique('admins','admin_email')->ignore($this->admin)],
             'email'=>['required','email', Rule::unique('users','email')->ignore($this->user)],
             'password'=>['required', 'min:6'],
-            'full_address'=>['required', 'max:100'],
-            'house_no'=>['required', 'numeric'],
-            'country'=>['required'],
-            'city'=>['required'],
-            'phone'=>['required','min:11','max:11','regex:/01[0125][0-9]{8}/'],
+            'full_address'=>[ 'max:100'],
+            // 'house_no'=>[ 'numeric'],
+            // 'country'=>['required'],
+            // 'city'=>['required'],
+            'phone'=>['min:11','max:11','regex:/01[0125][0-9]{8}/'],
         ];
     }
 }

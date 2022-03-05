@@ -70,6 +70,7 @@ Route::post('/orders',[OrderController::class,'store']);
 Route::get('/orders/{order}',[OrderController::class,'show']);
 Route::put('/orders/{order}',[OrderController::class,'update']);
 Route::delete('/orders/{order}',[OrderController::class,'delete']);
+Route::get('/order/count',[OrderController::class,'getOrdersCount']);
 
 /**Routing Order Details*/
 Route::get('/order_details',[OrderDetailsController::class,'index']);
