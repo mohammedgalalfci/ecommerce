@@ -15,6 +15,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\resetPasswordController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\FatoorahController;
@@ -139,7 +140,6 @@ Route::group([
 ], function ($router) {
     Route::post('/login', [AuthController::class,'login']);
     Route::post('/signup', [AuthController::class,'signup']);
-
     // Route::post('logout', 'AuthController@logout');
     // Route::post('refresh', 'AuthController@refresh');
     // Route::post('me', 'AuthController@me');
@@ -150,6 +150,7 @@ Route::group([
 Route::post('messages',[ChatController::class,'message']);
 
 Route::post('/resetPassword', [resetPasswordController::class,'sendEmail']);
+Route::post('/resetMyPassword', [ChangePasswordController::class,'process']);
 
  Route::group([
 
