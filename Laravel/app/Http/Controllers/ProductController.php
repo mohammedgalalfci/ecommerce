@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class ProductController extends Controller
 {
     public function index(){
@@ -36,7 +37,10 @@ class ProductController extends Controller
             $nameOnly=pathinfo($fileName,PATHINFO_FILENAME);
             $extention=$request->file('image')->getClientOriginalExtension();
             $complexPic=str_replace(' ','_',$nameOnly.'-'.rand().'_'.time().'.'.$extention);
-            $path=$request->file('image')->move('public/image',$complexPic);
+            // $path=$request->file('image')->move('public/image',$complexPic);
+
+            // Upload an Image File to Cloudinary with One line of Code
+            $imageURL = cloudinary()->upload($request->file('image')->getRealPath())->getSecurePath();
         }
         $product->image=$complexPic;
         $product->save();
