@@ -6,11 +6,20 @@ use App\Http\Resources\RatingResource;
 use App\Models\Rating;
 use Illuminate\Http\Request;
 use App\Http\Requests\RatingRequest;
+use Illuminate\Support\Facades\DB;
 class RatingController extends Controller
 {
     public function index(){
         $ratings=Rating::orderBy('id', 'DESC')->get();
         return RatingResource::collection($ratings);
+    }
+    public function getRatingForEachProduct($id){
+        return  $ratings = DB::table('ratings')
+        //->select('product_id','count(*) as count','avg(*) as average')
+        ->selectRaw('product_id, count(*) AS count')
+        ->where('ratings.product_id', '=', $id)
+        ->groupBy('product_id')
+        ->get();
     }
     public function store(RatingRequest $request){
         $data = request()->all();
