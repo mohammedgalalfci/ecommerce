@@ -104,12 +104,7 @@ Route::delete('/carts/{cart}',[CartController::class,'delete']);
 Route::get('/cart/{cart}',[CartController::class,'cartsForEachUser']);
 
 
-/**Routing Users */
-Route::get('/users',[UserController::class,'index']);
-Route::post('/users',[UserController::class,'store']);
-Route::get('/users/{user}',[UserController::class,'show']);
-Route::put('/users/{user}',[UserController::class,'update']);
-Route::delete('/users/{user}',[UserController::class,'delete']);
+
 
 /**Routing ratings */
 Route::get('/ratings',[RatingController::class,'index']);
@@ -169,3 +164,12 @@ Route::post('pay',[FatoorahController::class, 'payOrder']);
 //Route::get('pay', [FatoorahController::class, 'payOrder']);
 Route::get('call_back', [FatoorahController::class, 'callBack']);
 Route::get('phpinfo', fn () => phpinfo());
+
+Route::group(['middleware' => ['auth']], function () {
+/**Routing Users */
+Route::get('/users',[UserController::class,'index']);
+Route::post('/users',[UserController::class,'store']);
+Route::get('/users/{user}',[UserController::class,'show']);
+Route::put('/users/{user}',[UserController::class,'update']);
+Route::delete('/users/{user}',[UserController::class,'delete']);
+});

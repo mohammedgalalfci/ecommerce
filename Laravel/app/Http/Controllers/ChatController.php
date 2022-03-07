@@ -8,8 +8,8 @@ use App\Events\Message;
 class ChatController extends Controller
 {
     public function message(Request $reaquest){
-        
-        event(new Message($reaquest->input('username'),$reaquest->input('message')));
+
+        event(new Message($reaquest->input('username'),$reaquest->input('message'),$reaquest->input('created_at')));
 
         return [];
     }
