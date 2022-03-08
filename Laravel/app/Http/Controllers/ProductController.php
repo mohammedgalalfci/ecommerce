@@ -74,7 +74,7 @@ class ProductController extends Controller
     public function delete($product){
         $oneProduct=Product::findOrFail($product);
         $oneProduct->delete();
-        return new ProductResource($oneProduct);
+        // return new ProductResource($oneProduct);
         return response()->json(["message"=>"Product Deleted Successfully"],201);
     }
 
