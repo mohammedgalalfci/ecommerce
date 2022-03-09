@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Models\Subcategory;
+use App\Http\Models\Comment;
 class Product extends Model
 {
     use HasFactory;
@@ -52,5 +53,8 @@ class Product extends Model
     public function user()
     {
         return $this->belongsToMany(User::class);
+    }
+    public function comment(){
+        return $this->hasMany(Comment::class);
     }
 }
