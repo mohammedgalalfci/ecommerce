@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
-//use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
@@ -136,6 +136,10 @@ Route::get('/contact_us',[ContactUsController::class,'index']);
 Route::get('/contact_us/{contact}',[ContactUsController::class,'show']);
 Route::post('/contact_us',[ContactUsController::class,'store']);
 Route::put('/contact_us/{contact}',[ContactUsController::class,'update']);
+
+/**Routing Comment*/
+Route::post('/comments',[CommentController::class,'store']);
+Route::get('/comments/{comment}',[CommentController::class,'getComments']);
 
 
 Route::group([

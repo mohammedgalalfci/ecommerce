@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Http\Models\Comment;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -47,7 +48,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsToMany(Product::class);
     }
-
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
