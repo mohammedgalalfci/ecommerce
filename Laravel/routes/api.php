@@ -94,6 +94,8 @@ Route::get('/{category}/products',[ProductController::class,'productsCategory'])
 Route::get('/{subcategory}/{category}/products',[ProductController::class,'getAllProductsForSubCategory']);
 Route::get('/discounts',[ProductController::class,'productDiscount']);
 
+
+
 /**Routing carts */
 Route::get('/carts',[CartController::class,'index']);
 Route::post('/carts',[CartController::class,'store']);
