@@ -154,7 +154,7 @@ Route::post('/resetMyPassword', [ChangePasswordController::class,'process']);
 
  Route::group([
 
-   // 'middleware' => 'checkAdminToken'
+    'middleware' => 'checkAdminToken'
 
 ], function ($router) {
 Route::group(['prefix' => 'admin'],function (){
@@ -169,11 +169,11 @@ Route::post('pay',[FatoorahController::class, 'payOrder']);
 Route::get('call_back', [FatoorahController::class, 'callBack']);
 Route::get('phpinfo', fn () => phpinfo());
 
-Route::group(['middleware' => ['auth']], function () {
-/**Routing Users */
-Route::get('/users',[UserController::class,'index']);
-Route::post('/users',[UserController::class,'store']);
-Route::get('/users/{user}',[UserController::class,'show']);
-Route::put('/users/{user}',[UserController::class,'update']);
-Route::delete('/users/{user}',[UserController::class,'delete']);
+Route::group(['middleware' => ['checkPassword']], function () {
+    /**Routing Users */
+    Route::get('/users',[UserController::class,'index']);
+    Route::post('/users',[UserController::class,'store']);
+    Route::get('/users/{user}',[UserController::class,'show']);
+    Route::put('/users/{user}',[UserController::class,'update']);
+    Route::delete('/users/{user}',[UserController::class,'delete']);
 });
