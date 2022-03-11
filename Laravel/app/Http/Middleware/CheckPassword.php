@@ -15,10 +15,10 @@ class CheckPassword
      */
     public function handle($request, Closure $next)
     {
-        if( $request->api_password !== env('API_PASSWORD','ase1iXcLAxanvXLZcgh6tk')){
+        $headers = apache_request_headers();
+        if(!isset($headers['api_password']) || $headers['api_password']!=="ase1iXcLAxanvXLZcgh6tk"){
             return response()->json(['message' => 'Unauthenticated.']);
         }
-
         return $next($request);
     }
 }
