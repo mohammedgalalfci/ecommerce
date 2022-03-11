@@ -42,7 +42,7 @@ class ProductController extends Controller
             // Upload an Image File to Cloudinary with One line of Code
             $imageURL = cloudinary()->upload($request->file('image')->getRealPath())->getSecurePath();
         }
-        $product->image=$complexPic;
+        $product->image=$imageURL;
         $product->save();
         return response()->json(["message"=>"Product Created Successfully"],201);
 
