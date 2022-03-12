@@ -25,7 +25,8 @@ class UserController extends Controller
             'house_no' => $data['house_no'],
             'country' => $data['country'],
             'city' => $data['city'],
-            'phone' => $data['phone']
+            'phone' => $data['phone'],
+            // 'api-password'=>$data['ase1iXcLAxanvXLZcgh6tk']
         ]);
         // return new CustomerResource($customer);
         return response()->json(["message"=>"User Created Successfully"],201);

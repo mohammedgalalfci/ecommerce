@@ -16,7 +16,8 @@ class CheckPassword
     public function handle($request, Closure $next)
     {
         $headers = apache_request_headers();
-        if(!isset($headers['api_password']) || $headers['api_password']!=="ase1iXcLAxanvXLZcgh6tk"){
+        // dd($headers['api_password']);
+        if(!isset($headers['Authorization']) || $headers['Authorization']!=="Basic ase1iXcLAxanvXLZcgh6tk"){
             return response()->json(['message' => 'Unauthenticated.']);
         }
         return $next($request);

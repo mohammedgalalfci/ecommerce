@@ -55,7 +55,7 @@ class ProductController extends Controller
 
     public function update($product,Request $req){
         $req->validate([
-            'product_name'=>['min:3','max:25'],
+            'product_name'=>['min:3','max:255'],
             'description'=>['min:10', 'max:255'],
             'price'=>['numeric'],
             'discount'=>'numeric',
