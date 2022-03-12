@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 class UserController extends Controller
@@ -33,8 +34,12 @@ class UserController extends Controller
     }
 
     public function show($user){
-        $oneUser=User::findOrFail($user);
-        return new UserResource($oneUser);
+        // $oneUser=User::findOrFail($user);
+        // return new UserResource($oneUser);
+        return  $carts = DB::table('users')
+                ->select('users.id','users.email','users.name','users.full_address','users.house_no','users.country','users.city','users.phone','users.created_at')
+                ->where('users.email', '=',$user)
+                ->get();
     }
 
     public function update($user,Request $req){

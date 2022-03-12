@@ -105,7 +105,7 @@ Route::get('/cart/{cart}',[CartController::class,'cartsForEachUser']);
 /**Routing Users */
 //Route::get('/users',[UserController::class,'index']);
 //Route::post('/users',[UserController::class,'store']);
-Route::get('/users/{user}',[UserController::class,'show']);
+// Route::get('/users/{user}',[UserController::class,'show']);
 //Route::put('/users/{user}',[UserController::class,'update']);
 //Route::delete('/users/{user}',[UserController::class,'delete']);
 
@@ -177,6 +177,8 @@ Route::group(['middleware' => ['checkPassword']], function () {
     Route::post('/users',[UserController::class,'store']);
     Route::delete('/users/{user}',[UserController::class,'delete']);
     Route::put('/users/{user}',[UserController::class,'update']);
+    Route::get('/users/{user}',[UserController::class,'show']);
+
 
     Route::get('/orders',[OrderController::class,'index']);
     Route::post('/orders',[OrderController::class,'store']);
@@ -218,6 +220,6 @@ Route::group(['middleware' => ['checkPassword']], function () {
     Route::get('/contact_us',[ContactUsController::class,'index']);
     Route::post('/contact_us',[ContactUsController::class,'store']);
 
-    
+
 
 });
