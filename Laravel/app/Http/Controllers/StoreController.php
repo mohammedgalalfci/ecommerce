@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\StoreResource;
 use Illuminate\Http\Request;
 use App\Models\Store;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreRequest;
 class StoreController extends Controller
 {
@@ -50,6 +51,9 @@ class StoreController extends Controller
     }
 
     public function storesForeachProduct($prodId){
-        return Store::where('product_id','=',$prodId)->get();
+        // return Store::where('product_id','=',$prodId)->get();
+        return  $stores = DB::table('stores')
+        ->where('stores.product_id', '=',$prodId)
+        ->get();
     }
 }

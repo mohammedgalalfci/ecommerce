@@ -197,6 +197,8 @@ Route::group(['middleware' => ['checkPassword']], function () {
     Route::post('/stores',[StoreController::class,'store']);
     Route::put('/stores/{store}',[StoreController::class,'update']);
     Route::delete('/stores/{store}',[StoreController::class,'delete']);
+    Route::get('/store/{ProdId}',[StoreController::class,'storesForeachProduct']);
+
 
 
     Route::get('/subcategories',[SubcategoryController::class,'index']);
