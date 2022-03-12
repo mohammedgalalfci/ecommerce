@@ -94,6 +94,8 @@ Route::get('/{category}/products',[ProductController::class,'productsCategory'])
 Route::get('/{subcategory}/{category}/products',[ProductController::class,'getAllProductsForSubCategory']);
 Route::get('/discounts',[ProductController::class,'productDiscount']);
 
+
+
 /**Routing carts */
 Route::get('/carts',[CartController::class,'index']);
 Route::post('/carts',[CartController::class,'store']);
@@ -165,6 +167,9 @@ Route::group(['prefix' => 'admin'],function (){
 });
 
 });
+
+
+
 
 Route::post('pay',[FatoorahController::class, 'payOrder']);
 //Route::get('pay', [FatoorahController::class, 'payOrder']);

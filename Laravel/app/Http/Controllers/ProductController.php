@@ -99,4 +99,5 @@ class ProductController extends Controller
             ['cat_id','=',$catId]
         ])->get();
     }
+
 }
