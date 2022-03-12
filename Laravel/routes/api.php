@@ -168,6 +168,9 @@ Route::group(['prefix' => 'admin'],function (){
 
 });
 
+
+
+
 Route::post('pay',[FatoorahController::class, 'payOrder']);
 //Route::get('pay', [FatoorahController::class, 'payOrder']);
 Route::get('call_back', [FatoorahController::class, 'callBack']);
