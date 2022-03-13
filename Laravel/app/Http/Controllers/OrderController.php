@@ -95,7 +95,7 @@ class OrderController extends Controller
     public function userOrders($userId){
         return  $orders = DB::table('orders')
         ->where('orders.user_id', '=',$userId)
-        ->get();
+        ->orderBy('id', 'DESC')->get();
     }
 
 }
