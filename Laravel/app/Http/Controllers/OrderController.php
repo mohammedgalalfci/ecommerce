@@ -20,14 +20,14 @@ class OrderController extends Controller
     }
     public function getOrdersCount(){
         return  DB::table('orders')
-        ->select(DB::raw('COUNT(*)'))           
+        ->select(DB::raw('COUNT(*)'))
         ->where("status","=","pending")
         ->get();
     }
 
     public function store(OrderRequest $request){
-        
-        
+
+
         DB::transaction(function(){
             $data = request()->all();
             $order=Order::create([
@@ -44,7 +44,7 @@ class OrderController extends Controller
                 'phone'=>$data['phone'],
                 'payment_method'=>$data['payment_method'],
                 'user_id'=>$data['user_id'],
-                
+
             ]);
             $carts = DB::table('carts')
                 ->select('id','status')
@@ -55,14 +55,14 @@ class OrderController extends Controller
                 OrderDetails::create([
                     'order_id' => $order->id,
                     'cart_id'=>$carts[$i]->id
-                ]); 
+                ]);
                 DB::table('carts')
                 ->update(['status'=>'completed']);
             }
-            
+
             $this->sendOrderEmail($order);
         });
-        
+
         // return new OrderResource($order);
         return response()->json(["message"=>"Order Created Successfully"],201);
     }
@@ -90,6 +90,12 @@ class OrderController extends Controller
         $oneOrder->delete();
         // return new OrderResource($oneOrder);
         return response()->json(["message"=>"Order Deleted Successfully"],201);
+    }
+
+    public function userOrders($userId){
+        return  $orders = DB::table('orders')
+        ->where('orders.user_id', '=',$userId)
+        ->get();
     }
 
 }
